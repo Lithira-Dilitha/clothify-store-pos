@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="756.0" prefWidth="1135.0" style="-fx-background-color: ECF0F1;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.clothify.pos.controller.ItemFormController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#34495e" height="756.0" stroke="BLACK" strokeType="INSIDE" width="215.0" />
+      <Label layoutX="22.0" layoutY="21.0" prefHeight="47.0" prefWidth="135.0" text="User Name" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="28.0" layoutY="162.0" prefHeight="56.0" prefWidth="170.0" style="-fx-background-color: #ECF0F1;" text="Dashboard">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="27.0" layoutY="254.0" prefHeight="56.0" prefWidth="170.0" style="-fx-background-color: #ECF0F1;" text="Customer">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="28.0" layoutY="352.0" prefHeight="56.0" prefWidth="170.0" style="-fx-background-color: #ECF0F1;" text="Order">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="28.0" layoutY="443.0" prefHeight="56.0" prefWidth="170.0" style="-fx-background-color: #ECF0F1;" text="Item">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="29.0" layoutY="530.0" prefHeight="56.0" prefWidth="170.0" style="-fx-background-color: #ECF0F1;" text="Supplier">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="49.0" layoutY="691.0" prefHeight="35.0" prefWidth="135.0" style="-fx-background-color: #ECF0F1;" text="Log out">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="22.0" layoutY="76.0" prefHeight="23.0" prefWidth="135.0" text="User ID" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <TableView layoutX="248.0" layoutY="121.0" prefHeight="361.0" prefWidth="828.0">
+        <columns>
+          <TableColumn prefWidth="140.0" style="-fx-background-color: A9C6DC;" text="item Code" />
+          <TableColumn prefWidth="201.0" style="-fx-background-color: A9C6DC;" text="Name" />
+            <TableColumn prefWidth="197.0" style="-fx-background-color: A9C6DC;" text="Size" />
+            <TableColumn prefWidth="148.0" style="-fx-background-color: A9C6DC;" text="Qty" />
+            <TableColumn prefWidth="141.0" style="-fx-background-color: A9C6DC;" text="Price" />
+        </columns>
+      </TableView>
+      <Label layoutX="527.0" layoutY="20.0" prefHeight="50.0" prefWidth="240.0" text="Manage Item" textFill="#34495e">
+         <font>
+            <Font name="System Bold" size="34.0" />
+         </font>
+      </Label>
+      <JFXTextField layoutX="254.0" layoutY="520.0" prefHeight="35.0" prefWidth="178.0" promptText="Item Code">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField layoutX="254.0" layoutY="695.0" prefHeight="35.0" prefWidth="178.0" promptText="Price">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField layoutX="254.0" layoutY="648.0" prefHeight="35.0" prefWidth="178.0" promptText="Size">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField layoutX="254.0" layoutY="588.0" prefHeight="35.0" prefWidth="178.0" promptText="Name">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </JFXTextField>
+      <JFXButton layoutX="457.0" layoutY="520.0" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #34495e;" text="Search" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="846.0" layoutY="666.0" prefHeight="56.0" prefWidth="110.0" style="-fx-background-color: #34495e;" text="Update" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="718.0" layoutY="666.0" prefHeight="56.0" prefWidth="98.0" style="-fx-background-color: #34495e;" text="Delete" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="592.0" layoutY="666.0" prefHeight="56.0" prefWidth="110.0" style="-fx-background-color: #34495e;" text="Add" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="692.0" layoutY="80.0" prefHeight="28.0" prefWidth="78.0" text="Time :">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="775.0" layoutY="80.0" prefHeight="28.0" prefWidth="78.0" text="Label" />
+      <Label layoutX="866.0" layoutY="80.0" prefHeight="28.0" prefWidth="78.0" text="Date :">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="960.0" layoutY="80.0" prefHeight="28.0" prefWidth="78.0" text="Label" />
+   </children>
+</AnchorPane>
