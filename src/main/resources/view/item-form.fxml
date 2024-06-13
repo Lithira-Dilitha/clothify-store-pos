@@ -55,10 +55,11 @@
       <TableView layoutX="248.0" layoutY="121.0" prefHeight="361.0" prefWidth="828.0">
         <columns>
           <TableColumn prefWidth="140.0" style="-fx-background-color: A9C6DC;" text="item Code" />
-          <TableColumn prefWidth="201.0" style="-fx-background-color: A9C6DC;" text="Name" />
-            <TableColumn prefWidth="197.0" style="-fx-background-color: A9C6DC;" text="Size" />
-            <TableColumn prefWidth="148.0" style="-fx-background-color: A9C6DC;" text="Qty" />
-            <TableColumn prefWidth="141.0" style="-fx-background-color: A9C6DC;" text="Price" />
+          <TableColumn prefWidth="161.0" style="-fx-background-color: A9C6DC;" text="Name" />
+            <TableColumn prefWidth="126.0" style="-fx-background-color: A9C6DC;" text="Size" />
+            <TableColumn prefWidth="114.0" style="-fx-background-color: A9C6DC;" text="Qty" />
+            <TableColumn prefWidth="138.0" style="-fx-background-color: A9C6DC;" text="Price" />
+            <TableColumn prefWidth="147.0" style="-fx-background-color: A9C6DC;" text="Supplier" />
         </columns>
       </TableView>
       <Label layoutX="527.0" layoutY="20.0" prefHeight="50.0" prefWidth="240.0" text="Manage Item" textFill="#34495e">

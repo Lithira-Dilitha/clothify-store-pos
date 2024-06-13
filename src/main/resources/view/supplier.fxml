@@ -9,7 +9,6 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="756.0" prefWidth="1135.0" style="-fx-background-color: ECF0F1;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.clothify.pos.controller.SupplierFormController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#34495e" height="756.0" stroke="BLACK" strokeType="INSIDE" width="215.0" />
@@ -57,9 +56,8 @@
          <columns>
             <TableColumn prefWidth="140.0" style="-fx-background-color: A9C6DC;" text="Supplier Id" />
             <TableColumn prefWidth="201.0" style="-fx-background-color: A9C6DC;" text="Name" />
-            <TableColumn prefWidth="197.0" style="-fx-background-color: A9C6DC;" text="Company" />
-            <TableColumn prefWidth="148.0" style="-fx-background-color: A9C6DC;" text="Email" />
-            <TableColumn prefWidth="141.0" style="-fx-background-color: A9C6DC;" text="Iteam" />
+            <TableColumn prefWidth="224.0" style="-fx-background-color: A9C6DC;" text="Company" />
+            <TableColumn prefWidth="262.0" style="-fx-background-color: A9C6DC;" text="Email" />
          </columns>
       </TableView>
       <Label layoutX="530.0" layoutY="24.0" prefHeight="50.0" prefWidth="287.0" text="Manage Supplier" textFill="#34495e">
