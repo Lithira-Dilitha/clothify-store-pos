@@ -9,44 +9,8 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="1135.0" style="-fx-background-color: ECF0F1;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="1135.0" style="-fx-background-color: ECF0F1;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.clothify.pos.controller.AddcustomerFormController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#34495e" height="756.0" stroke="BLACK" strokeType="INSIDE" width="215.0" />
-      <Label layoutX="14.0" layoutY="14.0" prefHeight="47.0" prefWidth="135.0" text="User Name" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="25.0" />
-         </font>
-      </Label>
-      <JFXButton layoutX="22.0" layoutY="152.0" prefHeight="56.0" prefWidth="170.0" style="-fx-background-color: #ECF0F1;" text="Dashboard">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </JFXButton>
-      <JFXButton layoutX="22.0" layoutY="244.0" prefHeight="56.0" prefWidth="170.0" style="-fx-background-color: #ECF0F1;" text="Customer">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </JFXButton>
-      <JFXButton layoutX="22.0" layoutY="342.0" prefHeight="56.0" prefWidth="170.0" style="-fx-background-color: #ECF0F1;" text="Order">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </JFXButton>
-      <JFXButton layoutX="22.0" layoutY="433.0" prefHeight="56.0" prefWidth="170.0" style="-fx-background-color: #ECF0F1;" text="Iteam">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </JFXButton>
-      <JFXButton layoutX="22.0" layoutY="520.0" prefHeight="56.0" prefWidth="170.0" style="-fx-background-color: #ECF0F1;" text="Supplier">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </JFXButton>
-      <JFXButton layoutX="39.0" layoutY="681.0" prefHeight="35.0" prefWidth="135.0" style="-fx-background-color: #ECF0F1;" text="Log out">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </JFXButton>
       <TableView layoutX="228.0" layoutY="114.0" prefHeight="348.0" prefWidth="866.0">
         <columns>
           <TableColumn prefWidth="109.59999084472656" style="-fx-background-color: A9C6DC;" text="Customer ID" />
@@ -100,11 +64,6 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </JFXButton>
-      <Label layoutX="14.0" layoutY="66.0" prefHeight="23.0" prefWidth="135.0" text="User ID" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="19.0" />
-         </font>
-      </Label>
       <Label layoutX="682.0" layoutY="70.0" prefHeight="28.0" prefWidth="78.0" text="Time :">
          <font>
             <Font name="System Bold" size="13.0" />
@@ -117,5 +76,46 @@
          </font>
       </Label>
       <Label layoutX="950.0" layoutY="70.0" prefHeight="28.0" prefWidth="78.0" text="Label" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#34495e" height="756.0" stroke="BLACK" strokeType="INSIDE" width="215.0" />
+      <Label layoutX="22.0" layoutY="21.0" prefHeight="47.0" prefWidth="135.0" text="User Name" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btnDasshBoard" layoutX="28.0" layoutY="162.0" onAction="#btnDasshBoardOnAction" prefHeight="56.0" prefWidth="170.0" style="-fx-background-color: #ECF0F1;" text="Dashboard">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btnCustomer" layoutX="27.0" layoutY="254.0" onAction="#btnCustomerOnAction" prefHeight="56.0" prefWidth="170.0" style="-fx-background-color: #ECF0F1;" text="Customer">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btnOrder" layoutX="28.0" layoutY="352.0" onAction="#btnOrderOnAction" prefHeight="56.0" prefWidth="170.0" style="-fx-background-color: #ECF0F1;" text="Order">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btnItem" layoutX="28.0" layoutY="443.0" onAction="#btnIteamOnAction" prefHeight="56.0" prefWidth="170.0" style="-fx-background-color: #ECF0F1;" text="Item">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btnSupplier" layoutX="29.0" layoutY="530.0" onAction="#btnSupplierOnAction" prefHeight="56.0" prefWidth="170.0" style="-fx-background-color: #ECF0F1;" text="Supplier">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btnLogOut" layoutX="49.0" layoutY="691.0" onAction="#btnLogOutOnAction" prefHeight="35.0" prefWidth="135.0" style="-fx-background-color: #ECF0F1;" text="Log out">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="22.0" layoutY="76.0" prefHeight="23.0" prefWidth="135.0" text="User ID" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
