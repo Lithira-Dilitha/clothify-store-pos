@@ -1,4 +1,4 @@
-package edu.clothify.pos.dto;
+package edu.clothify.pos.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,9 +9,10 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Employee {
-    private String customerId;
+public class ItemEntity {
+    private String itemCode;
     private String name;
-    private String address;
-    private String email;
+    private String size;
+    private Integer qty;
+    private Double price;
 }
