@@ -1,4 +1,6 @@
 package edu.clothify.pos.bo.suplier.impl;
 
-public class SupplierBoImpl {
+import edu.clothify.pos.bo.suplier.SupplierBo;
+
+public class SupplierBoImpl implements SupplierBo {
 }

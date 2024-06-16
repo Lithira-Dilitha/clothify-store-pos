@@ -1,4 +1,6 @@
 package edu.clothify.pos.bo.item.impl;
 
-public class ItemBoImpl {
+import edu.clothify.pos.bo.item.ItemBo;
+
+public class ItemBoImpl implements ItemBo {
 }

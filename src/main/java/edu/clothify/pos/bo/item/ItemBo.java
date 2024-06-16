@@ -1,4 +1,6 @@
 package edu.clothify.pos.bo.item;
 
-public interface ItemBo {
+import edu.clothify.pos.bo.SuperBo;
+
+public interface ItemBo extends SuperBo {
 }
