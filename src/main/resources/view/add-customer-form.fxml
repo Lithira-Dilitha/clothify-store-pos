@@ -11,12 +11,12 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="1135.0" style="-fx-background-color: ECF0F1;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.clothify.pos.controller.AddcustomerFormController">
    <children>
-      <TableView layoutX="228.0" layoutY="114.0" prefHeight="348.0" prefWidth="866.0">
+      <TableView fx:id="tblCustomerTable" layoutX="228.0" layoutY="114.0" prefHeight="348.0" prefWidth="866.0">
         <columns>
-          <TableColumn prefWidth="109.59999084472656" style="-fx-background-color: A9C6DC;" text="Customer ID" />
-          <TableColumn prefWidth="194.39996337890625" style="-fx-background-color: A9C6DC;" text="Name" />
-            <TableColumn prefWidth="274.4000244140625" style="-fx-background-color: A9C6DC;" text="Address" />
-            <TableColumn prefWidth="337.59991455078125" style="-fx-background-color: A9C6DC;" text="Email" />
+          <TableColumn fx:id="colCustomerId" prefWidth="109.59999084472656" style="-fx-background-color: A9C6DC;" text="Customer ID" />
+          <TableColumn fx:id="colName" prefWidth="194.39996337890625" style="-fx-background-color: A9C6DC;" text="Name" />
+            <TableColumn fx:id="colAddress" prefWidth="274.4000244140625" style="-fx-background-color: A9C6DC;" text="Address" />
+            <TableColumn fx:id="colEmail" prefWidth="337.59991455078125" style="-fx-background-color: A9C6DC;" text="Email" />
         </columns>
       </TableView>
       <Label alignment="CENTER" layoutX="525.0" layoutY="14.0" prefHeight="47.0" prefWidth="225.0" text="Manage Customer" textFill="#34495e">
@@ -24,22 +24,22 @@
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <JFXTextField layoutX="248.0" layoutY="498.0" prefHeight="35.0" prefWidth="178.0" promptText="Customer ID">
+      <JFXTextField fx:id="txtCustomerId" layoutX="248.0" layoutY="498.0" prefHeight="35.0" prefWidth="178.0" promptText="Customer ID">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </JFXTextField>
-      <JFXTextField layoutX="248.0" layoutY="682.0" prefHeight="35.0" prefWidth="178.0" promptText="Email">
+      <JFXTextField fx:id="txtEmail" layoutX="248.0" layoutY="682.0" prefHeight="35.0" prefWidth="178.0" promptText="Email">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </JFXTextField>
-      <JFXTextField layoutX="248.0" layoutY="626.0" prefHeight="35.0" prefWidth="178.0" promptText="Address">
+      <JFXTextField fx:id="txtAddress" layoutX="248.0" layoutY="626.0" prefHeight="35.0" prefWidth="178.0" promptText="Address">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </JFXTextField>
-      <JFXTextField layoutX="248.0" layoutY="566.0" prefHeight="35.0" prefWidth="178.0" promptText="Name">
+      <JFXTextField fx:id="txtName" layoutX="248.0" layoutY="566.0" prefHeight="35.0" prefWidth="178.0" promptText="Name">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -59,7 +59,7 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="586.0" layoutY="644.0" prefHeight="56.0" prefWidth="110.0" style="-fx-background-color: #34495e;" text="Add" textFill="WHITE">
+      <JFXButton fx:id="btnAddCustomer" layoutX="586.0" layoutY="644.0" onAction="#btnAddCustomerOnAction" prefHeight="56.0" prefWidth="110.0" style="-fx-background-color: #34495e;" text="Add" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
