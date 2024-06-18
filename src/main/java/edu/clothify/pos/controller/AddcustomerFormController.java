@@ -142,6 +142,7 @@ public class AddcustomerFormController implements Initializable {
         System.out.println(save);
         if(save){
             new Alert(Alert.AlertType.CONFIRMATION,"Customer Add !").show();
+            clearTextBoxes();
             loadTable();
         }else {
             new Alert(Alert.AlertType.ERROR,"Customer Not Add !").show();
@@ -172,6 +173,14 @@ public class AddcustomerFormController implements Initializable {
                 txtAddress.getText(),
                 txtEmail.getText()
         );
+        boolean b = customerBo.updateCustomer(txtCustomerId.getText(),customer);
+        if(b){
+            new Alert(Alert.AlertType.CONFIRMATION,"Customer Updated !").show();
+            clearTextBoxes();
+            loadTable();
+        }else{
+            new Alert(Alert.AlertType.ERROR,"Customer Not Updated !").show();
+        }
     }
 
     public void btnSearchOnAction(ActionEvent actionEvent) {
@@ -179,5 +188,12 @@ public class AddcustomerFormController implements Initializable {
         txtName.setText(customer.getName());
         txtAddress.setText(customer.getAddress());
         txtEmail.setText(customer.getEmail());
+    }
+
+    private void clearTextBoxes(){
+        txtCustomerId.setText(null);
+        txtName.setText(null);
+        txtAddress.setText(null);
+        txtEmail.setText(null);
     }
 }

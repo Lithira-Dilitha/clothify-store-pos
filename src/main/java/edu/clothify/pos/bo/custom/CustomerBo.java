@@ -9,4 +9,5 @@ public interface CustomerBo extends SuperBo {
     boolean save(Customer customer);
     List<Customer> getAllCustomers();
     Customer getCustomerById(String customerId);
+    boolean updateCustomer(String CustomerId ,Customer customer);
 }
