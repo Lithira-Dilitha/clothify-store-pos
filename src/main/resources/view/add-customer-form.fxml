@@ -44,12 +44,12 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </JFXTextField>
-      <JFXButton layoutX="451.0" layoutY="498.0" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #34495e;" text="Search" textFill="WHITE">
+      <JFXButton fx:id="btnSearch" layoutX="451.0" layoutY="498.0" onAction="#btnSearchOnAction" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #34495e;" text="Search" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="835.0" layoutY="644.0" prefHeight="56.0" prefWidth="110.0" style="-fx-background-color: #34495e;" text="Update" textFill="WHITE">
+      <JFXButton fx:id="btnUpdateCustomer" layoutX="835.0" layoutY="644.0" onAction="#btnUpdateCustomerOnAction" prefHeight="56.0" prefWidth="110.0" style="-fx-background-color: #34495e;" text="Update" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>

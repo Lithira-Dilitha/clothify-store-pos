@@ -8,4 +8,5 @@ import java.util.List;
 public interface CustomerBo extends SuperBo {
     boolean save(Customer customer);
     List<Customer> getAllCustomers();
+    Customer getCustomerById(String customerId);
 }

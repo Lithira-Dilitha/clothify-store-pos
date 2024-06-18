@@ -44,6 +44,8 @@ public class AddcustomerFormController implements Initializable {
     public TableColumn colName;
     public TableColumn colAddress;
     public TableColumn colEmail;
+    public JFXButton btnUpdateCustomer;
+    public JFXButton btnSearch;
 
     private CustomerBo customerBo = BoFactory.getInstance().getBo(BoType.CUSTOMER);
 
@@ -163,4 +165,19 @@ public class AddcustomerFormController implements Initializable {
         tblCustomerTable.setItems(customersTable);
     }
 
+    public void btnUpdateCustomerOnAction(ActionEvent actionEvent) {
+        Customer customer = new Customer(
+                txtCustomerId.getText(),
+                txtName.getText(),
+                txtAddress.getText(),
+                txtEmail.getText()
+        );
+    }
+
+    public void btnSearchOnAction(ActionEvent actionEvent) {
+        Customer customer = customerBo.getCustomerById(txtCustomerId.getText());
+        txtName.setText(customer.getName());
+        txtAddress.setText(customer.getAddress());
+        txtEmail.setText(customer.getEmail());
+    }
 }

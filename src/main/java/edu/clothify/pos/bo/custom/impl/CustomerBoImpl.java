@@ -21,4 +21,10 @@ public class CustomerBoImpl implements CustomerBo {
     public List<Customer> getAllCustomers() {
         return customerDao.getAllCustomers();
     }
+
+    @Override
+    public Customer getCustomerById(String customerId) {
+        return customerDao.getCustomerById(customerId);
+    }
+
 }

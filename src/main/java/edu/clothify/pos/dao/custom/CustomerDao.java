@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface CustomerDao extends CrudDao<CustomerEntity> {
     List<Customer> getAllCustomers();
+    Customer getCustomerById(String customerId);
 }

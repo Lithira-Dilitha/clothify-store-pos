@@ -23,12 +23,21 @@ public class CustomerDaoImpl implements CustomerDao {
     @Override
     public List<Customer> getAllCustomers(){
         Session session = HibernateUtil.getSession();
-        List<CustomerEntity> allcustomers = session.createQuery("from CustomerEntity", CustomerEntity.class).getResultList();
+        List<CustomerEntity> allcustomers = session.createQuery("from CustomerEntity", CustomerEntity.class)
+                .getResultList();
         List<Customer> customersList = new ArrayList<>();
         allcustomers.forEach(customerEntity ->{
             customersList.add(new ModelMapper().map(customerEntity, Customer.class));
         });
 
         return customersList;
+    }
+    @Override
+    public Customer getCustomerById(String customerId){
+        Session session = HibernateUtil.getSession();
+        CustomerEntity customer = session.createQuery("from CustomerEntity where id = :customerId", CustomerEntity.class)
+                .setParameter("customerId", customerId)
+                .uniqueResult();
+       return new ModelMapper().map(customer, Customer.class);
     }
 }
