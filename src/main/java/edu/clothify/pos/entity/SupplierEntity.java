@@ -14,4 +14,5 @@ public class SupplierEntity {
     private String name;
     private String company;
     private String email;
+    private Boolean isActive;
 }

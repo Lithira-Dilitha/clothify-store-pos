@@ -18,8 +18,8 @@ public class CustomerBoImpl implements CustomerBo {
     }
 
     @Override
-    public List<Customer> getAllCustomers() {
-        return customerDao.getAllCustomers();
+    public List<Customer> getAllCustomerByIsActiveTrue() {
+        return customerDao.getAllCustomerByIsActiveTrue();
     }
 
     @Override
@@ -30,6 +30,11 @@ public class CustomerBoImpl implements CustomerBo {
     @Override
     public boolean updateCustomer(String CutomerID ,Customer customer){
         return customerDao.updateCustomer(CutomerID,new ModelMapper().map(customer, CustomerEntity.class));
+    }
+
+    @Override
+    public boolean deleteCustomer(String customerId) {
+        return customerDao.deleteCustomer(customerId);
     }
 
 }

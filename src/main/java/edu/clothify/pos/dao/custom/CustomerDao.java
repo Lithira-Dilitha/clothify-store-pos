@@ -7,7 +7,8 @@ import edu.clothify.pos.entity.CustomerEntity;
 import java.util.List;
 
 public interface CustomerDao extends CrudDao<CustomerEntity> {
-    List<Customer> getAllCustomers();
+    List<Customer> getAllCustomerByIsActiveTrue();
     Customer getCustomerById(String customerId);
     boolean updateCustomer(String customerId,CustomerEntity customer);
+    boolean deleteCustomer(String customerId);
 }

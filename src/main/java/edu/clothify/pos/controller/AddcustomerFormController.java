@@ -46,6 +46,7 @@ public class AddcustomerFormController implements Initializable {
     public TableColumn colEmail;
     public JFXButton btnUpdateCustomer;
     public JFXButton btnSearch;
+    public JFXButton btnDelete;
 
     private CustomerBo customerBo = BoFactory.getInstance().getBo(BoType.CUSTOMER);
 
@@ -136,7 +137,8 @@ public class AddcustomerFormController implements Initializable {
                 txtCustomerId.getText(),
                 txtName.getText(),
                 txtAddress.getText(),
-                txtEmail.getText()
+                txtEmail.getText(),
+                true
         );
         boolean save = customerBo.save(customer);
         System.out.println(save);
@@ -152,14 +154,15 @@ public class AddcustomerFormController implements Initializable {
     private void loadTable() {
         ObservableList<Customer> customersTable = FXCollections.observableArrayList();
 
-        List<Customer> allCustomers = customerBo.getAllCustomers();
+        List<Customer> allCustomers = customerBo.getAllCustomerByIsActiveTrue();
         allCustomers.forEach(customer -> {
             customersTable.add(
                     new Customer(
                             customer.getCustomerId(),
                             customer.getName(),
                             customer.getAddress(),
-                            customer.getEmail()
+                            customer.getEmail(),
+                            true
                     )
             );
         });
@@ -171,7 +174,8 @@ public class AddcustomerFormController implements Initializable {
                 txtCustomerId.getText(),
                 txtName.getText(),
                 txtAddress.getText(),
-                txtEmail.getText()
+                txtEmail.getText(),
+                true
         );
         boolean b = customerBo.updateCustomer(txtCustomerId.getText(),customer);
         if(b){
@@ -195,5 +199,16 @@ public class AddcustomerFormController implements Initializable {
         txtName.setText(null);
         txtAddress.setText(null);
         txtEmail.setText(null);
+    }
+
+    public void btnDeleteOnAction(ActionEvent actionEvent) {
+        boolean b = customerBo.deleteCustomer(txtCustomerId.getText());
+        if(b){
+            new Alert(Alert.AlertType.CONFIRMATION,"Customer Successfully Deleted");
+            clearTextBoxes();
+            loadTable();
+        }else{
+            new Alert(Alert.AlertType.CONFIRMATION,"Customer Successfully Deleted");
+        }
     }
 }

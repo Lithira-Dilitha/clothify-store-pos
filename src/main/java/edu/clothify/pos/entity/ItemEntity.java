@@ -15,4 +15,5 @@ public class ItemEntity {
     private String size;
     private Integer qty;
     private Double price;
+    private Boolean isActive;
 }

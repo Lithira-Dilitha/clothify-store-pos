@@ -7,7 +7,8 @@ import java.util.List;
 
 public interface CustomerBo extends SuperBo {
     boolean save(Customer customer);
-    List<Customer> getAllCustomers();
+    List<Customer> getAllCustomerByIsActiveTrue();
     Customer getCustomerById(String customerId);
     boolean updateCustomer(String CustomerId ,Customer customer);
+    boolean deleteCustomer(String customerId);
 }
