@@ -28,8 +28,8 @@ public class CustomerBoImpl implements CustomerBo {
     }
 
     @Override
-    public boolean updateCustomer(String CutomerID ,Customer customer){
-        return customerDao.updateCustomer(CutomerID,new ModelMapper().map(customer, CustomerEntity.class));
+    public boolean updateCustomer(String customerId ,Customer customer){
+        return customerDao.updateCustomer(customerId,new ModelMapper().map(customer, CustomerEntity.class));
     }
 
     @Override
