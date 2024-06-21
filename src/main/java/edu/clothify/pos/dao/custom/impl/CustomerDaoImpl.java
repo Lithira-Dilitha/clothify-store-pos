@@ -23,6 +23,39 @@ public class CustomerDaoImpl implements CustomerDao {
     }
 
     @Override
+    public boolean update(String id, CustomerEntity entity) {
+        Session session = HibernateUtil.getSession();
+        session.getTransaction().begin();
+        Query query = session.createQuery("update CustomerEntity set name = :name" +
+                ",address = :address" +
+                ",email = :email,isActive = :isActive where customerId =:customerId");
+//        query.setParameter("customerId",customer.getCustomerId());
+        query.setParameter("name",entity.getName());
+        query.setParameter("address",entity.getAddress());
+        query.setParameter("email",entity.getEmail());
+        query.setParameter("isActive",entity.getIsActive());
+        query.setParameter("customerId",id);
+        query.executeUpdate();
+        session.getTransaction().commit();
+        session.close();
+        return true;
+    }
+
+    @Override
+    public boolean delete(String id) {
+        Session session = HibernateUtil.getSession();
+        session.getTransaction().begin();
+        Query query = session.createQuery("update CustomerEntity set isActive = :isActive " +
+                "where customerId = :customerId");
+        query.setParameter("isActive",false);
+        query.setParameter("customerId",id);
+        query.executeUpdate();
+        session.getTransaction().commit();
+        session.close();
+        return true;
+    }
+
+    @Override
     public List<Customer> getAllCustomerByIsActiveTrue() {
         Session session = HibernateUtil.getSession();
         session.getTransaction().begin();
@@ -48,38 +81,5 @@ public class CustomerDaoImpl implements CustomerDao {
         session.getTransaction().commit();
         session.close();
        return new ModelMapper().map(customer, Customer.class);
-    }
-
-    @Override
-    public boolean updateCustomer(String customerId,CustomerEntity customer){
-        Session session = HibernateUtil.getSession();
-        session.getTransaction().begin();
-        Query query = session.createQuery("update CustomerEntity set name = :name" +
-                ",address = :address" +
-                ",email = :email,isActive = :isActive where customerId =:customerId");
-//        query.setParameter("customerId",customer.getCustomerId());
-        query.setParameter("name",customer.getName());
-        query.setParameter("address",customer.getAddress());
-        query.setParameter("email",customer.getEmail());
-        query.setParameter("isActive",customer.getIsActive());
-        query.setParameter("customerId",customerId);
-        query.executeUpdate();
-        session.getTransaction().commit();
-        session.close();
-        return true;
-    }
-
-    @Override
-    public boolean deleteCustomer(String customerId) {
-        Session session = HibernateUtil.getSession();
-        session.getTransaction().begin();
-        Query query = session.createQuery("update CustomerEntity set isActive = :isActive " +
-                "where customerId = :customerId");
-        query.setParameter("isActive",false);
-        query.setParameter("customerId",customerId);
-        query.executeUpdate();
-        session.getTransaction().commit();
-        session.close();
-        return true;
     }
 }

@@ -8,8 +8,8 @@ import java.util.List;
 
 public interface EmployeeBo extends SuperBo {
     boolean save(Employee employee);
-    List<Customer> getAllEmployeeByIsActiveTrue();
-    Customer getEmployeeById(String employeeId);
+    List<Employee> getAllEmployeeByIsActiveTrue();
+    Employee getEmployeeById(String employeeId);
     boolean updateEmployee(String employeeId ,Employee employee);
     boolean deleteEmployee(String employeeId);
 }

@@ -204,11 +204,11 @@ public class AddcustomerFormController implements Initializable {
     public void btnDeleteOnAction(ActionEvent actionEvent) {
         boolean b = customerBo.deleteCustomer(txtCustomerId.getText());
         if(b){
-            new Alert(Alert.AlertType.CONFIRMATION,"Customer Successfully Deleted");
+            new Alert(Alert.AlertType.CONFIRMATION,"Customer Successfully Deleted").show();
             clearTextBoxes();
             loadTable();
         }else{
-            new Alert(Alert.AlertType.CONFIRMATION,"Customer Successfully Deleted");
+            new Alert(Alert.AlertType.CONFIRMATION,"Customer Successfully Deleted").show();
         }
     }
 }

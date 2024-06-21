@@ -2,35 +2,42 @@ package edu.clothify.pos.bo.employee.impl;
 
 import edu.clothify.pos.bo.employee.EmployeeBo;
 import edu.clothify.pos.dao.DaoFactory;
-import edu.clothify.pos.dto.Customer;
+import edu.clothify.pos.dao.employee.EmployeeDao;
 import edu.clothify.pos.dto.Employee;
+import edu.clothify.pos.entity.EmployeeEntity;
+import edu.clothify.pos.utill.DaoType;
+import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 
 import java.util.List;
-
+@RequiredArgsConstructor
 public class EmployeeBoImpl implements EmployeeBo {
 
+    final ModelMapper modelMapper;
+
+    EmployeeDao employeeDao = DaoFactory.getInstance().getDao(DaoType.EMPLOYEE);
     @Override
     public boolean save(Employee employee) {
-        return false;
+        return employeeDao.save(modelMapper.map(employee, EmployeeEntity.class));
     }
 
     @Override
-    public List<Customer> getAllEmployeeByIsActiveTrue() {
-        return List.of();
+    public List<Employee> getAllEmployeeByIsActiveTrue() {
+        return employeeDao.getAllEmployeeByIsActiveTrue();
     }
 
     @Override
-    public Customer getEmployeeById(String employeeId) {
-        return null;
+    public Employee getEmployeeById(String employeeId) {
+        return employeeDao.getEmployeeById(employeeId);
     }
 
     @Override
     public boolean updateEmployee(String employeeId, Employee employee) {
-        return false;
+        return employeeDao.update(employeeId,modelMapper.map(employee, EmployeeEntity.class));
     }
 
     @Override
     public boolean deleteEmployee(String employeeId) {
-        return false;
+        return employeeDao.delete(employeeId);
     }
 }
