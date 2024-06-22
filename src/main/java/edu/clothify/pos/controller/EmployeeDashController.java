@@ -17,6 +17,7 @@ public class EmployeeDashController {
     public JFXButton btnItem;
     public JFXButton btnSupplier;
     public JFXButton btnLogOut;
+    public JFXButton btnAddEmployee;
 
 
     public void btnDasshBoardOnAction(ActionEvent actionEvent) {
@@ -83,6 +84,18 @@ public class EmployeeDashController {
     public void btnLogOutOnAction(ActionEvent actionEvent) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/view/login-form.fxml"));
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void btnAddEmployeeOnAction(ActionEvent actionEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/view/employee-form.fxml"));
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);

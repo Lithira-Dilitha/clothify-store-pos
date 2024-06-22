@@ -162,7 +162,7 @@ public class AddcustomerFormController implements Initializable {
                             customer.getName(),
                             customer.getAddress(),
                             customer.getEmail(),
-                            true
+                            customer.getIsActive()
                     )
             );
         });

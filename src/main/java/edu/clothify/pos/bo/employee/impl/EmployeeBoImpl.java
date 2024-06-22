@@ -10,10 +10,11 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 
 import java.util.List;
-@RequiredArgsConstructor
+
 public class EmployeeBoImpl implements EmployeeBo {
 
-    final ModelMapper modelMapper;
+
+    ModelMapper modelMapper = new ModelMapper();
 
     EmployeeDao employeeDao = DaoFactory.getInstance().getDao(DaoType.EMPLOYEE);
     @Override

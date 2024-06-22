@@ -1,6 +1,7 @@
 package edu.clothify.pos.bo;
 
 import edu.clothify.pos.bo.custom.impl.CustomerBoImpl;
+import edu.clothify.pos.bo.employee.impl.EmployeeBoImpl;
 import edu.clothify.pos.utill.BoType;
 
 public class BoFactory {
@@ -12,6 +13,7 @@ public class BoFactory {
     public <T extends SuperBo> T getBo(BoType type){
         switch (type){
             case CUSTOMER:return(T) new CustomerBoImpl();
+            case EMPLOYEE:return (T)new EmployeeBoImpl();
         }
         return null;
     }
