@@ -4,6 +4,7 @@ import edu.clothify.pos.dao.custom.impl.CustomerDaoImpl;
 import edu.clothify.pos.dao.employee.EmployeeDao;
 import edu.clothify.pos.dao.employee.impl.EmployeeDaoImpl;
 import edu.clothify.pos.dao.item.impl.ItemDaoImpl;
+import edu.clothify.pos.dao.supplier.impl.SupplierDaoImpl;
 import edu.clothify.pos.utill.DaoType;
 
 public class DaoFactory {
@@ -17,6 +18,7 @@ public class DaoFactory {
             case CUSTOMER:return (T) new CustomerDaoImpl();
             case EMPLOYEE:return (T) new EmployeeDaoImpl();
             case ITEM:return (T) new ItemDaoImpl();
+            case SUPPLIER:return (T) new SupplierDaoImpl();
         }
         return null;
     }
