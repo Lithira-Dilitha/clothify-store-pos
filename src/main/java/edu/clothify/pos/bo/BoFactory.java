@@ -2,6 +2,7 @@ package edu.clothify.pos.bo;
 
 import edu.clothify.pos.bo.custom.impl.CustomerBoImpl;
 import edu.clothify.pos.bo.employee.impl.EmployeeBoImpl;
+import edu.clothify.pos.bo.item.impl.ItemBoImpl;
 import edu.clothify.pos.utill.BoType;
 
 public class BoFactory {
@@ -14,6 +15,7 @@ public class BoFactory {
         switch (type){
             case CUSTOMER:return(T) new CustomerBoImpl();
             case EMPLOYEE:return (T)new EmployeeBoImpl();
+            case ITEM:return (T) new ItemBoImpl();
         }
         return null;
     }

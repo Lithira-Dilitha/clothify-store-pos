@@ -32,12 +32,13 @@ public class ItemDaoImpl implements ItemDao {
         session.getTransaction().begin();
         Query query = session.createQuery("update ItemEntity set name = :name" +
                 ",size = :size" +
-                ",qty = :qty,price = :price,isActive = :isActive where itemCode =:itemCode");
+                ",qty = :qty,price = :price,supplier = :supplier,isActive = :isActive where itemCode =:itemCode");
         query.setParameter("name",entity.getName());
         query.setParameter("size",entity.getSize());
         query.setParameter("qty",entity.getQty());
         query.setParameter("price",entity.getPrice());
         query.setParameter("isActive",entity.getIsActive());
+        query.setParameter("supplier",entity.getSupplier());
         query.setParameter("itemCode",id);
         query.executeUpdate();
         session.getTransaction().commit();
@@ -78,7 +79,7 @@ public class ItemDaoImpl implements ItemDao {
     public Item getItemById(String itemId) {
         Session session = HibernateUtil.getSession();
         session.getTransaction().begin();
-        ItemEntity itemEntity = session.createQuery("from itemEntity where itemCode = :itemCode"
+        ItemEntity itemEntity = session.createQuery("from ItemEntity where itemCode = :itemCode"
                         , ItemEntity.class)
                 .setParameter("itemCode",itemId)
                 .uniqueResult();
