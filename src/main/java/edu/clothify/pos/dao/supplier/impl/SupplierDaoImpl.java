@@ -1,7 +1,10 @@
 package edu.clothify.pos.dao.supplier.impl;
 
 import edu.clothify.pos.dao.supplier.SupplierDao;
+import edu.clothify.pos.dto.Employee;
 import edu.clothify.pos.dto.Supplier;
+import edu.clothify.pos.entity.CustomerEntity;
+import edu.clothify.pos.entity.EmployeeEntity;
 import edu.clothify.pos.entity.SupplierEntity;
 import edu.clothify.pos.utill.HibernateUtil;
 import org.hibernate.Session;
@@ -13,6 +16,7 @@ import java.util.List;
 
 public class SupplierDaoImpl implements SupplierDao {
 
+    ModelMapper mapper = new ModelMapper();
     @Override
     public boolean save(SupplierEntity entity) {
         Session session = HibernateUtil.getSession();
@@ -27,13 +31,14 @@ public class SupplierDaoImpl implements SupplierDao {
     public boolean update(String id, SupplierEntity entity) {
         Session session = HibernateUtil.getSession();
         session.getTransaction().begin();
-        Query query = session.createQuery("update SupplierEntity set name = :name,company = :company," +
-                " email = :email,isActive = :isActive where supplierId =:supplierId");
+        Query query = session.createQuery("update SupplierEntity set name = :name" +
+                ",company = :company" +
+                ",email = :email,isActive = :isActive where supplierId =:supplierId");
         query.setParameter("name",entity.getName());
         query.setParameter("company",entity.getCompany());
         query.setParameter("email",entity.getEmail());
         query.setParameter("isActive",entity.getIsActive());
-        query.setParameter("employeeId",id);
+        query.setParameter("supplierId",id);
         query.executeUpdate();
         session.getTransaction().commit();
         session.close();
@@ -58,14 +63,12 @@ public class SupplierDaoImpl implements SupplierDao {
     public List<Supplier> getAllSupplierByIsActiveTrue() {
         Session session = HibernateUtil.getSession();
         session.getTransaction().begin();
-        List<SupplierEntity> allSuppliers = session.createQuery("from SupplierEntity where isActive =true", SupplierEntity.class)
-                .getResultList();
+        List<SupplierEntity> supplierEntities = session.createQuery("from SupplierEntity where isActive =true"
+                , SupplierEntity.class).getResultList();
         List<Supplier> supplierList = new ArrayList<>();
-        allSuppliers.forEach(supplierEntity ->{
-            supplierList.add(new ModelMapper().map(supplierEntity,Supplier.class));
+        supplierEntities.forEach(entity ->{
+            supplierList.add(mapper.map(entity,Supplier.class));
         });
-        session.getTransaction().commit();
-        session.close();
         return supplierList;
     }
 
@@ -79,6 +82,6 @@ public class SupplierDaoImpl implements SupplierDao {
                 .uniqueResult();
         session.getTransaction().commit();
         session.close();
-        return new ModelMapper().map(supplier, Supplier.class);
+        return mapper.map(supplier,Supplier.class);
     }
 }
