@@ -109,7 +109,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </JFXTextField>
-      <Label alignment="CENTER" contentDisplay="TOP" layoutX="9.0" layoutY="38.0" prefHeight="44.0" prefWidth="198.0" text="Clothify Store Pos" textFill="#ecf0f1">
+      <Label alignment="CENTER" contentDisplay="TOP" layoutX="7.0" layoutY="35.0" prefHeight="44.0" prefWidth="198.0" text="Clothify Store Pos" textFill="#ecf0f1">
          <font>
             <Font name="Corbel Bold" size="25.0" />
          </font>
