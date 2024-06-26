@@ -1,9 +1,6 @@
 package edu.clothify.pos.utill;
 
-import edu.clothify.pos.entity.CustomerEntity;
-import edu.clothify.pos.entity.EmployeeEntity;
-import edu.clothify.pos.entity.ItemEntity;
-import edu.clothify.pos.entity.SupplierEntity;
+import edu.clothify.pos.entity.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
@@ -24,6 +21,7 @@ public class HibernateUtil {
                 .addAnnotatedClass(EmployeeEntity.class)
                 .addAnnotatedClass(ItemEntity.class)
                 .addAnnotatedClass(SupplierEntity.class)
+                .addAnnotatedClass(OrdersEntity.class)
                 .getMetadataBuilder()
                 .applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE)
                 .build();
