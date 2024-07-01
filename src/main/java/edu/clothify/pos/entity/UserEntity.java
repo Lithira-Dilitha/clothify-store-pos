@@ -1,5 +1,8 @@
-package edu.clothify.pos.dto;
+package edu.clothify.pos.entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,7 +12,10 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class User {
+@Entity
+@Table(name = "user")
+public class UserEntity {
+    @Id
     private String userId;
     private String name;
     private String role;
