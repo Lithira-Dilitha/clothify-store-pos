@@ -6,6 +6,7 @@ import com.jfoenix.controls.JFXTextField;
 import edu.clothify.pos.bo.BoFactory;
 import edu.clothify.pos.bo.custom.CustomerBo;
 import edu.clothify.pos.bo.item.ItemBo;
+import edu.clothify.pos.bo.orders.OrdersBo;
 import edu.clothify.pos.dto.*;
 import edu.clothify.pos.utill.BoType;
 import jakarta.persistence.criteria.Order;
@@ -71,6 +72,7 @@ public class OrderFormController implements Initializable {
 
     CustomerBo customerBo = BoFactory.getInstance().getBo(BoType.CUSTOMER);
     ItemBo itemBo = BoFactory.getInstance().getBo(BoType.ITEM);
+    OrdersBo ordersBo = BoFactory.getInstance().getBo(BoType.ORDERS);
     public void btnDasshBoardOnAction(ActionEvent actionEvent) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/view/employee-dash.fxml"));
@@ -205,7 +207,9 @@ public class OrderFormController implements Initializable {
                         cartTable.getItemCode(),
                         cartTable.getQty()));
             });
-            System.out.println(new Orders(lblOrderId.getText(),cmbCustId.getValue().toString(),date,orderDetailsList));
+            Orders orders = new Orders(lblOrderId.getText(), cmbCustId.getValue().toString(), date, orderDetailsList);
+            System.out.println(orders);
+
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
@@ -240,6 +244,9 @@ public class OrderFormController implements Initializable {
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
     }
+    private void setOrderId(){
+        lblOrderId.setText(ordersBo.getOrderId());
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         colItemCode.setCellValueFactory(new PropertyValueFactory<>("itemCode"));
@@ -251,6 +258,7 @@ public class OrderFormController implements Initializable {
         loadCustomerId();
         loadItemId();
         loadTimeAndDate();
+        setOrderId();
         cmbCustId.getSelectionModel().selectedItemProperty().addListener((observable,oldValue,newValue)->{
             setCustomerDataForLbls((String) newValue);
         });

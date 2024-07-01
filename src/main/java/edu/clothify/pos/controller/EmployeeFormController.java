@@ -173,7 +173,6 @@ public class EmployeeFormController implements Initializable {
         txtPassWord.setText(null);
         txtEmail.setText(null);
     }
-
     public void btnUpdateEmployeeOnAction(ActionEvent actionEvent) {
         User user =new User(
                 txtEmployeeId.getText(),
