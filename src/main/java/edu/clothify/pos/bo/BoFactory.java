@@ -4,6 +4,7 @@ import edu.clothify.pos.bo.custom.impl.CustomerBoImpl;
 import edu.clothify.pos.bo.employee.impl.EmployeeBoImpl;
 import edu.clothify.pos.bo.item.impl.ItemBoImpl;
 import edu.clothify.pos.bo.suplier.impl.SupplierBoImpl;
+import edu.clothify.pos.bo.user.impl.UserBoImpl;
 import edu.clothify.pos.utill.BoType;
 
 public class BoFactory {
@@ -18,6 +19,7 @@ public class BoFactory {
             case EMPLOYEE:return (T)new EmployeeBoImpl();
             case ITEM:return (T) new ItemBoImpl();
             case SUPPLIER:return (T) new SupplierBoImpl();
+            case USER:return (T) new UserBoImpl();
         }
         return null;
     }

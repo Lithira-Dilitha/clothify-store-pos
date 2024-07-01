@@ -3,9 +3,8 @@ package edu.clothify.pos.controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import edu.clothify.pos.bo.BoFactory;
-import edu.clothify.pos.bo.employee.EmployeeBo;
-import edu.clothify.pos.dto.Customer;
-import edu.clothify.pos.dto.Employee;
+import edu.clothify.pos.bo.user.UserBo;
+import edu.clothify.pos.dto.User;
 import edu.clothify.pos.utill.BoType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -37,18 +36,19 @@ public class EmployeeFormController implements Initializable {
     public TableView tblEmployeeTable;
     public TableColumn colEmployeeId;
     public TableColumn colName;
-    public TableColumn colAddress;
-    public TableColumn colEmail;
     public JFXTextField txtEmployeeId;
-    public JFXTextField txtAddress;
     public JFXTextField txtName;
     public JFXButton btnSearch;
     public JFXButton btnUpdateEmployee;
     public JFXButton btnDeleteEmployee;
     public JFXButton btnAddEmployee;
     public JFXTextField txtEmail;
+    public JFXTextField txtPassWord;
+    public TableColumn colPassWord;
+    public TableColumn colEmail;
+    public TableColumn colRole;
 
-     EmployeeBo employeeBo = BoFactory.getInstance().getBo(BoType.EMPLOYEE);
+    UserBo userBo = BoFactory.getInstance().getBo(BoType.USER);
     public void btnDasshBoardOnAction(ActionEvent actionEvent) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/view/employee-dash.fxml"));
@@ -122,91 +122,91 @@ public class EmployeeFormController implements Initializable {
     }
 
     public void btnAddEmployeeOnAction(ActionEvent actionEvent) {
-        Employee employee = new Employee(
+        User user =new User(
                 txtEmployeeId.getText(),
                 txtName.getText(),
-                txtAddress.getText(),
+                "employee",
                 txtEmail.getText(),
+                txtPassWord.getText(),
                 true
         );
-        boolean save = employeeBo.save(employee);
+        boolean save = userBo.save(user);
         if(save){
-            new Alert(Alert.AlertType.CONFIRMATION,"Employee Add !").show();
+            new Alert(Alert.AlertType.CONFIRMATION,"User Updated !").show();
             clearTextBoxes();
             loadTable();
         }else{
-           new Alert(Alert.AlertType.CONFIRMATION,"Employee Not Add !").show();
+            new Alert(Alert.AlertType.ERROR,"User Not Updated !").show();
         }
     }
 
     public void btnDeleteEmployeeOnAction(ActionEvent actionEvent) {
-        boolean b = employeeBo.deleteEmployee(txtEmployeeId.getText());
+        boolean b = userBo.deleteUser(txtEmployeeId.getText());
         if(b){
-            new Alert(Alert.AlertType.CONFIRMATION,"Employee Successfully Deleted").show();
+            new Alert(Alert.AlertType.CONFIRMATION,"User Updated !").show();
             clearTextBoxes();
             loadTable();
         }else{
-            new Alert(Alert.AlertType.CONFIRMATION,"Employee Successfully Deleted").show();
+            new Alert(Alert.AlertType.ERROR,"User Not Updated !").show();
         }
-
     }
 
     private void loadTable() {
-        ObservableList<Employee> employeeTable = FXCollections.observableArrayList();
-
-        List<Employee> allEmployees = employeeBo.getAllEmployeeByIsActiveTrue();
-        allEmployees.forEach(employee ->{
-            employeeTable.add(
-                    new Employee(
-                          employee.getEmployeeId(),
-                          employee.getName(),
-                          employee.getAddress(),
-                          employee.getEmail(),
-                            employee.getIsActive()
-                    )
-            );
+        ObservableList<User> EmployeeList = FXCollections.observableArrayList();
+        List<User> users = userBo.getAllUserByIsActiveTrue();
+        users.forEach(user ->{
+            EmployeeList.add(new User(
+                    user.getUserId(),
+                    user.getName(),
+                    user.getRole(),
+                    user.getEmail(),
+                    user.getPassword(),
+                    user.getIsActive()
+            ));
         });
-        tblEmployeeTable.setItems(employeeTable);
+        tblEmployeeTable.setItems(EmployeeList);
     }
 
     private void clearTextBoxes() {
         txtEmployeeId.setText(null);
         txtName.setText(null);
-        txtAddress.setText(null);
+        txtPassWord.setText(null);
         txtEmail.setText(null);
     }
 
     public void btnUpdateEmployeeOnAction(ActionEvent actionEvent) {
-        Employee employee = new Employee(
+        User user =new User(
                 txtEmployeeId.getText(),
                 txtName.getText(),
-                txtAddress.getText(),
+                "employee",
                 txtEmail.getText(),
+                txtPassWord.getText(),
                 true
         );
-        boolean b = employeeBo.updateEmployee(txtEmployeeId.getText(),employee);
+        boolean b = userBo.updateUser(txtEmployeeId.getText(), user);
         if(b){
-            new Alert(Alert.AlertType.CONFIRMATION,"Employee Updated !").show();
+            new Alert(Alert.AlertType.CONFIRMATION,"User Updated !").show();
             clearTextBoxes();
             loadTable();
         }else{
-            new Alert(Alert.AlertType.ERROR,"Employee Not Updated !").show();
+            new Alert(Alert.AlertType.ERROR,"User Not Updated !").show();
         }
     }
 
     public void btnSearchOnAction(ActionEvent actionEvent) {
-        Employee employee = employeeBo.getEmployeeById(txtEmployeeId.getText());
-        txtName.setText(employee.getName());
-        txtAddress.setText(employee.getAddress());
-        txtEmail.setText(employee.getEmail());
+        User userById = userBo.getUserById(txtEmployeeId.getText());
+        txtName.setText(userById.getName());
+        txtEmail.setText(userById.getEmail());
+        txtPassWord.setText(userById.getPassword());
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        colEmployeeId.setCellValueFactory(new PropertyValueFactory<>("employeeId"));
+        colEmployeeId.setCellValueFactory(new PropertyValueFactory<>("userId"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        colPassWord.setCellValueFactory(new PropertyValueFactory<>("password"));
         colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        colRole.setCellValueFactory(new PropertyValueFactory<>("role"));
         loadTable();
     }
 }
