@@ -1,6 +1,7 @@
 package edu.clothify.pos.dao.orders.impl;
 
 import edu.clothify.pos.dao.orders.OrdersDao;
+import edu.clothify.pos.entity.OrdersEntity;
 import edu.clothify.pos.utill.HibernateUtil;
 import org.hibernate.Session;
 
@@ -31,5 +32,15 @@ public class OrdersDaoImpl implements OrdersDao {
         session.getTransaction().commit();
         session.close();
         return newOrderId;
+    }
+
+    @Override
+    public boolean placeOrder(OrdersEntity order) {
+        Session session = HibernateUtil.getSession();
+        session.getTransaction().begin();
+        session.persist(order);
+        session.getTransaction().commit();
+        session.close();
+        return true;
     }
 }

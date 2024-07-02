@@ -163,7 +163,7 @@ public class ItemFormController implements Initializable {
             clearTextBoxes();
             loadTable();
         }else{
-            new Alert(Alert.AlertType.CONFIRMATION,"Item Successfully Deleted").show();
+            new Alert(Alert.AlertType.CONFIRMATION,"Item Not Deleted").show();
         }
     }
 

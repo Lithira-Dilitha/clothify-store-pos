@@ -31,6 +31,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
@@ -178,6 +179,7 @@ public class OrderFormController implements Initializable {
         }
         cartList.add(cartTable);
         tblCart.setItems(cartList);
+        netTotalCalculate();
     }
     private void ClearTextBoxes(){
         lblUnitePrice.setText(null);
@@ -196,7 +198,7 @@ public class OrderFormController implements Initializable {
 
     public void btnPlaceOrderOnAction(ActionEvent actionEvent) {
         try {
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
             Date date = format.parse(lblDate.getText());
             List<OrderDetails> orderDetailsList = new ArrayList<>();
             cartList.forEach(cartTable ->{
@@ -208,6 +210,16 @@ public class OrderFormController implements Initializable {
                         cartTable.getQty()));
             });
             Orders orders = new Orders(lblOrderId.getText(), cmbCustId.getValue().toString(), date, orderDetailsList);
+            boolean isAdd = ordersBo.placeOrder(orders);
+            if(isAdd){
+
+            }
+//            if(b){
+//                new Alert(Alert.AlertType.CONFIRMATION,"Order Placed !").show();
+//                ClearTextBoxes();
+//            }else{
+//                new Alert(Alert.AlertType.ERROR,"Order Not Placed !").show();
+//            }
             System.out.println(orders);
 
         } catch (ParseException e) {
@@ -246,6 +258,13 @@ public class OrderFormController implements Initializable {
     }
     private void setOrderId(){
         lblOrderId.setText(ordersBo.getOrderId());
+    }
+    private void netTotalCalculate(){
+        double total =0;
+        for(CartTable cartObject : cartList){
+            total += cartObject.getTotal();
+        }
+        lblNetTotal.setText(String.valueOf(total)+"/=");
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
