@@ -4,10 +4,15 @@ import edu.clothify.pos.bo.item.ItemBo;
 import edu.clothify.pos.dao.DaoFactory;
 import edu.clothify.pos.dao.item.ItemDao;
 import edu.clothify.pos.dto.Item;
+import edu.clothify.pos.dto.OrderDetails;
 import edu.clothify.pos.entity.ItemEntity;
+import edu.clothify.pos.entity.OrderDetailsEntity;
 import edu.clothify.pos.utill.DaoType;
+import edu.clothify.pos.utill.HibernateUtil;
+import org.hibernate.Session;
 import org.modelmapper.ModelMapper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ItemBoImpl implements ItemBo {
@@ -37,4 +42,15 @@ public class ItemBoImpl implements ItemBo {
     public boolean deleteItem(String itemId) {
         return itemDao.delete(itemId);
     }
+
+    @Override
+    public boolean updateStock(List<OrderDetails> list) {
+       List<OrderDetailsEntity> itemEntities = new ArrayList<>();
+       for (OrderDetails orderDetails : list){
+           itemEntities.add(modelMapper.map(orderDetails, OrderDetailsEntity.class));
+       }
+       return itemDao.updateStock(itemEntities);
+    }
+
+
 }

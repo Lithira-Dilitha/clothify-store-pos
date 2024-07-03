@@ -6,6 +6,7 @@ import com.jfoenix.controls.JFXTextField;
 import edu.clothify.pos.bo.BoFactory;
 import edu.clothify.pos.bo.custom.CustomerBo;
 import edu.clothify.pos.bo.item.ItemBo;
+import edu.clothify.pos.bo.orderdetails.OrderDetailsBo;
 import edu.clothify.pos.bo.orders.OrdersBo;
 import edu.clothify.pos.dto.*;
 import edu.clothify.pos.utill.BoType;
@@ -74,6 +75,7 @@ public class OrderFormController implements Initializable {
     CustomerBo customerBo = BoFactory.getInstance().getBo(BoType.CUSTOMER);
     ItemBo itemBo = BoFactory.getInstance().getBo(BoType.ITEM);
     OrdersBo ordersBo = BoFactory.getInstance().getBo(BoType.ORDERS);
+    OrderDetailsBo orderDetailsBo =BoFactory.getInstance().getBo(BoType.ORDER_DETAILS);
     public void btnDasshBoardOnAction(ActionEvent actionEvent) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/view/employee-dash.fxml"));
@@ -212,14 +214,11 @@ public class OrderFormController implements Initializable {
             Orders orders = new Orders(lblOrderId.getText(), cmbCustId.getValue().toString(), date, orderDetailsList);
             boolean isAdd = ordersBo.placeOrder(orders);
             if(isAdd){
-
+                new Alert(Alert.AlertType.CONFIRMATION,"Order Placed !").show();
+                ClearTextBoxes();
+            }else{
+                new Alert(Alert.AlertType.ERROR,"Order Not Placed !").show();
             }
-//            if(b){
-//                new Alert(Alert.AlertType.CONFIRMATION,"Order Placed !").show();
-//                ClearTextBoxes();
-//            }else{
-//                new Alert(Alert.AlertType.ERROR,"Order Not Placed !").show();
-//            }
             System.out.println(orders);
 
         } catch (ParseException e) {
@@ -267,7 +266,7 @@ public class OrderFormController implements Initializable {
         lblNetTotal.setText(String.valueOf(total)+"/=");
     }
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize(URL url, ResourceBundle resourceBundle){
         colItemCode.setCellValueFactory(new PropertyValueFactory<>("itemCode"));
         colName.setCellValueFactory(new PropertyValueFactory<>("desc"));
         colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));

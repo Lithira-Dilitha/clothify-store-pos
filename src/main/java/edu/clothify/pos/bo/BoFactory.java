@@ -3,10 +3,12 @@ package edu.clothify.pos.bo;
 import edu.clothify.pos.bo.custom.impl.CustomerBoImpl;
 import edu.clothify.pos.bo.employee.impl.EmployeeBoImpl;
 import edu.clothify.pos.bo.item.impl.ItemBoImpl;
+import edu.clothify.pos.bo.orderdetails.impl.OrderDetailsBoImpl;
 import edu.clothify.pos.bo.orders.OrdersBo;
 import edu.clothify.pos.bo.orders.impl.OrdersBoImpl;
 import edu.clothify.pos.bo.suplier.impl.SupplierBoImpl;
 import edu.clothify.pos.bo.user.impl.UserBoImpl;
+import edu.clothify.pos.dao.orderdetails.impl.OrderDetailDaoImpl;
 import edu.clothify.pos.utill.BoType;
 
 public class BoFactory {
@@ -23,6 +25,7 @@ public class BoFactory {
             case SUPPLIER:return (T) new SupplierBoImpl();
             case USER:return (T) new UserBoImpl();
             case ORDERS:return (T) new OrdersBoImpl();
+            case ORDER_DETAILS:return (T) new OrderDetailsBoImpl();
         }
         return null;
     }

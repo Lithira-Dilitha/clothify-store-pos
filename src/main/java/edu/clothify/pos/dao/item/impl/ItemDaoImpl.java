@@ -4,8 +4,10 @@ package edu.clothify.pos.dao.item.impl;
 import edu.clothify.pos.dao.item.ItemDao;
 import edu.clothify.pos.dto.Employee;
 import edu.clothify.pos.dto.Item;
+import edu.clothify.pos.dto.OrderDetails;
 import edu.clothify.pos.entity.EmployeeEntity;
 import edu.clothify.pos.entity.ItemEntity;
+import edu.clothify.pos.entity.OrderDetailsEntity;
 import edu.clothify.pos.utill.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -50,14 +52,20 @@ public class ItemDaoImpl implements ItemDao {
     public boolean delete(String id) {
         Session session = HibernateUtil.getSession();
         session.getTransaction().begin();
-        Query query = session.createQuery("update ItemEntity set isActive = :isActive " +
-                "where itemCode = :itemCode");
-        query.setParameter("isActive",false);
-        query.setParameter("itemCode",id);
-        query.executeUpdate();
-        session.getTransaction().commit();
-        session.close();
-        return true;
+        try {
+            Query query = session.createQuery("update ItemEntity set isActive = :isActive " +
+                    "where itemCode = :itemCode");
+            query.setParameter("isActive",false);
+            query.setParameter("itemCode",id);
+            query.executeUpdate();
+            session.getTransaction().commit();
+            return true;
+        }catch (Exception e){
+            session.getTransaction().rollback();
+            return false;
+        }finally {
+            session.close();
+        }
     }
 
     @Override
@@ -87,4 +95,31 @@ public class ItemDaoImpl implements ItemDao {
         session.close();
         return new ModelMapper().map(itemEntity, Item.class);
     }
+
+    @Override
+    public boolean updateStock(List<OrderDetailsEntity> list) {
+        boolean isAdd = false;
+        for (OrderDetailsEntity orderDetailsEntity :list){
+            isAdd = updateStock(orderDetailsEntity.getQty(),orderDetailsEntity.getItemCode());
+        }
+        System.out.println(isAdd);
+        return isAdd;
+    }
+
+    @Override
+    public boolean updateStock(Integer qty, String itemCode) {
+        Session session = HibernateUtil.getSession();
+        session.getTransaction().begin();
+        ItemEntity itemEntity = session.get(ItemEntity.class, itemCode);
+        int newQty = itemEntity.getQty() - qty;
+        session.createQuery("update ItemEntity set qty=:qty where itemCode = :itemCode")
+                .setParameter("qty",newQty)
+                .setParameter("itemCode",itemCode)
+                .executeUpdate();
+        session.getTransaction().commit();
+        session.close();
+        return true;
+    }
+
+
 }

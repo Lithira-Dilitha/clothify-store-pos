@@ -3,6 +3,7 @@ package edu.clothify.pos.dao;
 import edu.clothify.pos.dao.custom.impl.CustomerDaoImpl;
 import edu.clothify.pos.dao.employee.impl.EmployeeDaoImpl;
 import edu.clothify.pos.dao.item.impl.ItemDaoImpl;
+import edu.clothify.pos.dao.orderdetails.impl.OrderDetailDaoImpl;
 import edu.clothify.pos.dao.orders.impl.OrdersDaoImpl;
 import edu.clothify.pos.dao.supplier.impl.SupplierDaoImpl;
 import edu.clothify.pos.dao.user.impl.UserDaoImpl;
@@ -22,6 +23,7 @@ public class DaoFactory {
             case SUPPLIER:return (T) new SupplierDaoImpl();
             case USER: return (T) new UserDaoImpl();
             case Orders:return (T) new OrdersDaoImpl();
+            case ORDER_DETAILS: return (T) new OrderDetailDaoImpl();
         }
         return null;
     }
