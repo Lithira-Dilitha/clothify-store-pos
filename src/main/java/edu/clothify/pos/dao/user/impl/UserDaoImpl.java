@@ -44,6 +44,19 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+    public User getUserByEmail(String userEmail) {
+        Session session = HibernateUtil.getSession();
+        session.getTransaction().begin();
+        UserEntity user = session.createQuery("from UserEntity where email = :email"
+                        , UserEntity.class)
+                .setParameter("email", userEmail)
+                .uniqueResult();
+        session.getTransaction().commit();
+        session.close();
+        return new ModelMapper().map(user, User.class);
+    }
+
+    @Override
     public boolean save(UserEntity dto) {
         Session session = HibernateUtil.getSession();
         session.getTransaction().begin();

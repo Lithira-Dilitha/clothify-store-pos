@@ -37,4 +37,9 @@ public class UserBoImpl implements UserBo {
     public boolean deleteUser(String userId) {
         return userDao.delete(userId);
     }
+
+    @Override
+    public User getUserBiEmail(String userEmail) {
+        return userDao.getUserByEmail(userEmail);
+    }
 }
