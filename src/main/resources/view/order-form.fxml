@@ -104,7 +104,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="btnPlaceOrder" layoutX="418.0" layoutY="627.0" onAction="#btnPlaceOrderOnAction" prefHeight="56.0" prefWidth="110.0" style="-fx-background-color: #34495e;" text="Place Order" textFill="WHITE">
+      <JFXButton fx:id="btnPlaceOrder" layoutX="436.0" layoutY="629.0" onAction="#btnPlaceOrderOnAction" prefHeight="56.0" prefWidth="110.0" style="-fx-background-color: #34495e;" text="Place Order" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -119,19 +119,8 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Separator layoutX="540.0" layoutY="496.0" orientation="VERTICAL" prefHeight="237.0" prefWidth="0.0" />
-      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#d9d9d9" height="237.0" layoutX="567.0" layoutY="499.0" stroke="#ebebeb" strokeType="INSIDE" width="508.0" />
-      <Label layoutX="592.0" layoutY="510.0" prefHeight="41.0" prefWidth="154.0" text="Return Order" textFill="#34495e">
-         <font>
-            <Font name="System Bold" size="19.0" />
-         </font>
-      </Label>
-      <JFXTextField layoutX="882.0" layoutY="574.0" prefHeight="28.0" prefWidth="154.0" promptText="Order Id" />
-      <JFXButton layoutX="889.0" layoutY="621.0" prefHeight="41.0" prefWidth="104.0" style="-fx-background-color: #34495e;" text="Return Order" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </JFXButton>
+      <Separator layoutX="609.0" layoutY="498.0" orientation="VERTICAL" prefHeight="237.0" prefWidth="0.0" />
+      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#d9d9d9" height="237.0" layoutX="667.0" layoutY="498.0" stroke="#ebebeb" strokeType="INSIDE" width="412.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#34495e" height="756.0" stroke="BLACK" strokeType="INSIDE" width="215.0" />
       <JFXButton fx:id="btnDasshBoard" layoutX="28.0" layoutY="162.0" onAction="#btnDasshBoardOnAction" prefHeight="56.0" prefWidth="170.0" style="-fx-background-color: #ECF0F1;" text="Dashboard">
          <font>
@@ -227,5 +216,15 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
+      <JFXButton fx:id="btnItem1" layoutX="761.0" layoutY="530.0" onAction="#btnIteamOnAction" prefHeight="68.0" prefWidth="221.0" style="-fx-background-color: #34495e;" text="Retarn Order" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btnItem11" layoutX="763.0" layoutY="624.0" onAction="#btnIteamOnAction" prefHeight="68.0" prefWidth="221.0" style="-fx-background-color: #34495e;" text="Create Bill" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

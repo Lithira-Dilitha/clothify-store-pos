@@ -46,7 +46,7 @@
             <Font name="System Bold" size="34.0" />
          </font>
       </Label>
-      <JFXButton fx:id="btnAddEmployee" layoutX="272.0" layoutY="92.0" onAction="#btnAddEmployeeOnAction" prefHeight="62.0" prefWidth="163.0" style="-fx-background-color: #34495e;" text="Add Employee" textFill="WHITE">
+      <JFXButton fx:id="btnAddEmployee" layoutX="911.0" layoutY="647.0" onAction="#btnAddEmployeeOnAction" prefHeight="62.0" prefWidth="163.0" style="-fx-background-color: #34495e;" text="Add Employee" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -63,5 +63,8 @@
             </ImageView>
          </graphic>
       </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="125.0" layoutX="263.0" layoutY="141.0" stroke="BLACK" strokeType="INSIDE" width="215.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="125.0" layoutX="825.0" layoutY="141.0" stroke="BLACK" strokeType="INSIDE" width="215.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="125.0" layoutX="536.0" layoutY="141.0" stroke="BLACK" strokeType="INSIDE" width="215.0" />
    </children>
 </AnchorPane>

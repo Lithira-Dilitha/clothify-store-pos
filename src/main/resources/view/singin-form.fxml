@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="756.0" prefWidth="1135.0" style="-fx-background-color: #ecf0f1;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.clothify.pos.controller.SignInFormController">
+   <children>
+      <Label alignment="CENTER" layoutX="347.0" layoutY="26.0" prefHeight="31.0" prefWidth="442.0" text="Clothify Store Pos" textFill="#34495e">
+         <font>
+            <Font name="Arial Black" size="36.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#d9d9d9" height="580.0" layoutX="608.0" layoutY="122.0" stroke="#ecf0f1" strokeType="INSIDE" width="478.0" />
+      <Label alignment="CENTER" layoutX="737.0" layoutY="130.0" prefHeight="70.0" prefWidth="220.0" text="Sign in" textFill="#34495e">
+         <font>
+            <Font name="System Bold" size="39.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="txtName" layoutX="687.0" layoutY="250.0" prefHeight="35.0" prefWidth="314.0" promptText="Name" />
+      <JFXTextField layoutX="687.0" layoutY="322.0" prefHeight="35.0" prefWidth="314.0" promptText="Email" />
+      <JFXComboBox layoutX="687.0" layoutY="396.0" prefHeight="35.0" prefWidth="314.0" promptText="Role">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXComboBox>
+      <JFXButton layoutX="899.0" layoutY="569.0" prefHeight="44.0" prefWidth="133.0" style="-fx-background-color: #34495E;" text="Create Account" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <ImageView fitHeight="500.0" fitWidth="511.0" layoutX="65.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/signin.png" />
+         </image>
+      </ImageView>
+      <JFXPasswordField layoutX="687.0" layoutY="469.0" prefHeight="35.0" prefWidth="314.0" promptText="Password" />
+   </children>
+</AnchorPane>

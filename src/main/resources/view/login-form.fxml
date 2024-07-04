@@ -4,6 +4,7 @@
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
@@ -15,17 +16,17 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="1135.0" style="-fx-background-color: #ecf0f1;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.clothify.pos.controller.LoginFormController">
    <children>
       <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#d9d9d9" height="532.0" layoutX="628.0" layoutY="153.0" stroke="#ecf0f1" strokeType="INSIDE" width="448.0" />
-      <JFXTextField labelFloat="true" layoutX="679.0" layoutY="311.0" prefHeight="31.0" prefWidth="346.0" promptText="Email" unFocusColor="#9a9999">
+      <JFXTextField fx:id="txtEmail" labelFloat="true" layoutX="679.0" layoutY="311.0" prefHeight="31.0" prefWidth="346.0" promptText="Email" unFocusColor="#9a9999">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </JFXTextField>
-      <JFXPasswordField labelFloat="true" layoutX="677.0" layoutY="376.0" prefHeight="33.0" prefWidth="346.0" promptText="Password" unFocusColor="#9a9999">
+      <JFXPasswordField fx:id="txtPassWord" labelFloat="true" layoutX="677.0" layoutY="376.0" prefHeight="33.0" prefWidth="346.0" promptText="Password" unFocusColor="#9a9999">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </JFXPasswordField>
-      <JFXButton layoutX="861.0" layoutY="472.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="39.0" prefWidth="163.0" style="-fx-background-color: #34495E;" text="Login" textFill="WHITE">
+      <JFXButton fx:id="btnLogin" layoutX="861.0" layoutY="472.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#btnLoginOnAction" prefHeight="39.0" prefWidth="163.0" style="-fx-background-color: #34495E;" text="Login" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -33,22 +34,6 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <Label layoutX="677.0" layoutY="416.0" prefHeight="25.0" prefWidth="128.0" text="forgot password" textFill="#34495e">
-         <font>
-            <Font name="System Bold Italic" size="16.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Label>
-      <Label layoutX="847.0" layoutY="561.0" prefHeight="25.0" prefWidth="128.0" text="Create Account" textFill="#34495e">
-         <font>
-            <Font name="System Bold Italic" size="16.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Label>
       <Separator layoutX="678.0" layoutY="550.0" prefHeight="7.0" prefWidth="346.0" />
       <Label alignment="CENTER" layoutX="749.0" layoutY="181.0" prefHeight="70.0" prefWidth="220.0" text="Login" textFill="#34495e">
          <font>
@@ -70,5 +55,15 @@
             <Font name="Arial Black" size="36.0" />
          </font>
       </Label>
+      <Hyperlink fx:id="btnfogotPassWord" layoutX="676.0" layoutY="418.0" onAction="#btnfogotPassWordOnAction" text="forgot password" textFill="#34495e">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </Hyperlink>
+      <Hyperlink fx:id="btnCreateAccount" layoutX="841.0" layoutY="558.0" onAction="#btnCreateAccountOnAction" text="Create Account" textFill="#34495e">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </Hyperlink>
    </children>
 </AnchorPane>
