@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import edu.clothify.pos.bo.BoFactory;
+import edu.clothify.pos.bo.encryption.PasswordEncryption;
 import edu.clothify.pos.bo.user.UserBo;
 import edu.clothify.pos.dto.User;
 import edu.clothify.pos.utill.BoType;
@@ -24,6 +25,7 @@ public class LoginFormController {
     public Hyperlink btnfogotPassWord;
     public Hyperlink btnCreateAccount;
     UserBo userBo = BoFactory.getInstance().getBo(BoType.USER);
+    PasswordEncryption encryption = BoFactory.getInstance().getBo(BoType.ENCRYPTION);
     public void btnfogotPassWordOnAction(ActionEvent actionEvent) {
     }
 
@@ -40,12 +42,12 @@ public class LoginFormController {
     }
 
     public void btnLoginOnAction(ActionEvent actionEvent) {
-        User userByEmail = userBo.getUserBiEmail(txtEmail.getText());
+        User userByEmail = userBo.getUserByEmail(txtEmail.getText());
         System.out.println(userByEmail);
         System.out.println(txtEmail.getText());
         System.out.println(txtPassWord.getText());
         boolean isTrue = userByEmail.getEmail().equals(txtEmail.getText()) &&
-                userByEmail.getPassword().equals(txtPassWord.getText());
+                encryption.checkPassword(txtPassWord.getText(),userByEmail.getPassword());
         System.out.println(isTrue);
         if(isTrue){
             if("employee".equalsIgnoreCase(userByEmail.getRole())){
