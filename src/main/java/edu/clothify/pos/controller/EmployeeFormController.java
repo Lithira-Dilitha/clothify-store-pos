@@ -3,6 +3,7 @@ package edu.clothify.pos.controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import edu.clothify.pos.bo.BoFactory;
+import edu.clothify.pos.bo.encryption.PasswordEncryption;
 import edu.clothify.pos.bo.user.UserBo;
 import edu.clothify.pos.dto.User;
 import edu.clothify.pos.utill.BoType;
@@ -49,6 +50,7 @@ public class EmployeeFormController implements Initializable {
     public TableColumn colRole;
 
     UserBo userBo = BoFactory.getInstance().getBo(BoType.USER);
+    PasswordEncryption encryption = BoFactory.getInstance().getBo(BoType.ENCRYPTION);
     public void btnDasshBoardOnAction(ActionEvent actionEvent) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/view/employee-dash.fxml"));
@@ -122,12 +124,13 @@ public class EmployeeFormController implements Initializable {
     }
 
     public void btnAddEmployeeOnAction(ActionEvent actionEvent) {
+
         User user =new User(
                 txtEmployeeId.getText(),
                 txtName.getText(),
                 "employee",
                 txtEmail.getText(),
-                txtPassWord.getText(),
+                encryption.hashPassword(txtPassWord.getText()),
                 true
         );
         boolean save = userBo.save(user);
@@ -179,7 +182,7 @@ public class EmployeeFormController implements Initializable {
                 txtName.getText(),
                 "employee",
                 txtEmail.getText(),
-                txtPassWord.getText(),
+                encryption.hashPassword(txtPassWord.getText()),
                 true
         );
         boolean b = userBo.updateUser(txtEmployeeId.getText(), user);
@@ -190,6 +193,9 @@ public class EmployeeFormController implements Initializable {
         }else{
             new Alert(Alert.AlertType.ERROR,"User Not Updated !").show();
         }
+    }
+    private void setEmployeeId(){
+        txtEmployeeId.setText(userBo.generateUserId());
     }
 
     public void btnSearchOnAction(ActionEvent actionEvent) {
@@ -207,5 +213,6 @@ public class EmployeeFormController implements Initializable {
         colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         colRole.setCellValueFactory(new PropertyValueFactory<>("role"));
         loadTable();
+        setEmployeeId();
     }
 }
