@@ -1,6 +1,7 @@
 package edu.clothify.pos.bo;
 
 import edu.clothify.pos.bo.custom.impl.CustomerBoImpl;
+import edu.clothify.pos.bo.email.impl.EmailSendingImpl;
 import edu.clothify.pos.bo.employee.impl.EmployeeBoImpl;
 import edu.clothify.pos.bo.encryption.impl.PasswordEncryptionImpl;
 import edu.clothify.pos.bo.item.impl.ItemBoImpl;
@@ -28,6 +29,7 @@ public class BoFactory {
             case ORDERS:return (T) new OrdersBoImpl();
             case ORDER_DETAILS:return (T) new OrderDetailsBoImpl();
             case ENCRYPTION:return (T) new PasswordEncryptionImpl();
+            case MAILSENDING:return (T) new EmailSendingImpl();
         }
         return null;
     }

@@ -27,6 +27,15 @@ public class LoginFormController {
     UserBo userBo = BoFactory.getInstance().getBo(BoType.USER);
     PasswordEncryption encryption = BoFactory.getInstance().getBo(BoType.ENCRYPTION);
     public void btnfogotPassWordOnAction(ActionEvent actionEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/view/forgot-password-form.fxml"));
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void btnCreateAccountOnAction(ActionEvent actionEvent) {
