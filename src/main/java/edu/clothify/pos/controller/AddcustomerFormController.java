@@ -57,6 +57,7 @@ public class AddcustomerFormController implements Initializable {
         colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
         colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         loadTable();
+        setCustomerId();
     }
 
     public void btnDasshBoardOnAction(ActionEvent actionEvent) {
@@ -146,6 +147,7 @@ public class AddcustomerFormController implements Initializable {
             new Alert(Alert.AlertType.CONFIRMATION,"Customer Add !").show();
             clearTextBoxes();
             loadTable();
+            setCustomerId();
         }else {
             new Alert(Alert.AlertType.ERROR,"Customer Not Add !").show();
         }
@@ -182,6 +184,7 @@ public class AddcustomerFormController implements Initializable {
             new Alert(Alert.AlertType.CONFIRMATION,"Customer Updated !").show();
             clearTextBoxes();
             loadTable();
+            setCustomerId();
         }else{
             new Alert(Alert.AlertType.ERROR,"Customer Not Updated !").show();
         }
@@ -195,10 +198,13 @@ public class AddcustomerFormController implements Initializable {
     }
 
     private void clearTextBoxes(){
-        txtCustomerId.setText(null);
         txtName.setText(null);
         txtAddress.setText(null);
         txtEmail.setText(null);
+    }
+
+    private void setCustomerId(){
+        txtCustomerId.setText(customerBo.generateCustomerId());
     }
 
     public void btnDeleteOnAction(ActionEvent actionEvent) {
@@ -207,6 +213,7 @@ public class AddcustomerFormController implements Initializable {
             new Alert(Alert.AlertType.CONFIRMATION,"Customer Successfully Deleted").show();
             clearTextBoxes();
             loadTable();
+            setCustomerId();
         }else{
             new Alert(Alert.AlertType.CONFIRMATION,"Customer Successfully Deleted").show();
         }

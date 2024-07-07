@@ -12,6 +12,8 @@ import org.modelmapper.ModelMapper;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class UserDaoImpl implements UserDao {
     @Override
@@ -57,6 +59,31 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+    public String generateUserId() {
+        Session session = HibernateUtil.getSession();
+        session.getTransaction().begin();
+        String lastUserId = session.createQuery("SELECT o.userId FROM UserEntity " +
+                        "o ORDER BY o.userId DESC", String.class)
+                .setMaxResults(1)
+                .uniqueResult();
+        String newUserId = "";
+        if(lastUserId == null){
+            newUserId="E0001";
+        }else {
+            Pattern pattern = Pattern.compile("E(\\d+)");
+            Matcher matcher = pattern.matcher(lastUserId);
+            if(matcher.find()){
+                int number = Integer.parseInt(matcher.group(1));
+                number++;
+                newUserId =String.format("E%04d",number);
+            }
+        }
+        session.getTransaction().commit();
+        session.close();
+        return newUserId;
+    }
+
+    @Override
     public boolean save(UserEntity dto) {
         Session session = HibernateUtil.getSession();
         session.getTransaction().begin();
@@ -99,4 +126,5 @@ public class UserDaoImpl implements UserDao {
         session.close();
         return true;
     }
+
 }

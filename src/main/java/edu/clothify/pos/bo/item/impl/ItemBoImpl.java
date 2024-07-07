@@ -8,8 +8,6 @@ import edu.clothify.pos.dto.OrderDetails;
 import edu.clothify.pos.entity.ItemEntity;
 import edu.clothify.pos.entity.OrderDetailsEntity;
 import edu.clothify.pos.utill.DaoType;
-import edu.clothify.pos.utill.HibernateUtil;
-import org.hibernate.Session;
 import org.modelmapper.ModelMapper;
 
 import java.util.ArrayList;
@@ -50,6 +48,11 @@ public class ItemBoImpl implements ItemBo {
            itemEntities.add(modelMapper.map(orderDetails, OrderDetailsEntity.class));
        }
        return itemDao.updateStock(itemEntities);
+    }
+
+    @Override
+    public String generateItemId() {
+        return itemDao.generateItemId();
     }
 
 

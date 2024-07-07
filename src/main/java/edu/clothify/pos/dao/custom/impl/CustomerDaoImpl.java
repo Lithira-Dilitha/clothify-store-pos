@@ -10,6 +10,8 @@ import org.modelmapper.ModelMapper;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CustomerDaoImpl implements CustomerDao {
     @Override
@@ -81,5 +83,29 @@ public class CustomerDaoImpl implements CustomerDao {
         session.getTransaction().commit();
         session.close();
        return new ModelMapper().map(customer, Customer.class);
+    }
+
+    @Override
+    public String generateCustomerId() {
+        Session session = HibernateUtil.getSession();
+        session.getTransaction().begin();
+        String lastOrderId = session.createQuery("SELECT c.customerId FROM CustomerEntity c ORDER BY c.customerId DESC", String.class)
+                .setMaxResults(1)
+                .uniqueResult();
+        String newOrderId = "";
+        if(lastOrderId == null){
+            newOrderId="C0001";
+        }else {
+            Pattern pattern = Pattern.compile("C(\\d+)");
+            Matcher matcher = pattern.matcher(lastOrderId);
+            if(matcher.find()){
+                int number = Integer.parseInt(matcher.group(1));
+                number++;
+                newOrderId =String.format("C%04d",number);
+            }
+        }
+        session.getTransaction().commit();
+        session.close();
+        return newOrderId;
     }
 }

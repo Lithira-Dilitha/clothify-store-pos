@@ -9,4 +9,5 @@ import java.util.List;
 public interface SupplierDao extends CrudDao<SupplierEntity> {
     List<Supplier> getAllSupplierByIsActiveTrue();
     Supplier getSupplierById(String supplierId);
+    String generateSupplierId();
 }

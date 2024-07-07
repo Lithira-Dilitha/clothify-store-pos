@@ -15,6 +15,8 @@ import org.modelmapper.ModelMapper;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ItemDaoImpl implements ItemDao {
 
@@ -119,6 +121,30 @@ public class ItemDaoImpl implements ItemDao {
         session.getTransaction().commit();
         session.close();
         return true;
+    }
+
+    @Override
+    public String generateItemId() {
+        Session session = HibernateUtil.getSession();
+        session.getTransaction().begin();
+        String lastOrderId = session.createQuery("SELECT i.itemCode FROM ItemEntity i ORDER BY i.itemCode DESC", String.class)
+                .setMaxResults(1)
+                .uniqueResult();
+        String newOrderId = "";
+        if(lastOrderId == null){
+            newOrderId="I0001";
+        }else {
+            Pattern pattern = Pattern.compile("I(\\d+)");
+            Matcher matcher = pattern.matcher(lastOrderId);
+            if(matcher.find()){
+                int number = Integer.parseInt(matcher.group(1));
+                number++;
+                newOrderId =String.format("I%04d",number);
+            }
+        }
+        session.getTransaction().commit();
+        session.close();
+        return newOrderId;
     }
 
 

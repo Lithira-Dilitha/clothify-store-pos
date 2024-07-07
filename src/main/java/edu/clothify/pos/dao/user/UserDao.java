@@ -10,4 +10,5 @@ public interface UserDao extends CrudDao<UserEntity> {
     List<User> getAllUserByIsActiveTrue();
     User getUserById(String employeeId);
     User getUserByEmail(String userEmail);
+    String generateUserId();
 }

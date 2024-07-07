@@ -138,6 +138,7 @@ public class EmployeeFormController implements Initializable {
             new Alert(Alert.AlertType.CONFIRMATION,"User Updated !").show();
             clearTextBoxes();
             loadTable();
+            setEmployeeId();
         }else{
             new Alert(Alert.AlertType.ERROR,"User Not Updated !").show();
         }
@@ -149,6 +150,7 @@ public class EmployeeFormController implements Initializable {
             new Alert(Alert.AlertType.CONFIRMATION,"User Updated !").show();
             clearTextBoxes();
             loadTable();
+            setEmployeeId();
         }else{
             new Alert(Alert.AlertType.ERROR,"User Not Updated !").show();
         }
@@ -171,7 +173,6 @@ public class EmployeeFormController implements Initializable {
     }
 
     private void clearTextBoxes() {
-        txtEmployeeId.setText(null);
         txtName.setText(null);
         txtPassWord.setText(null);
         txtEmail.setText(null);
@@ -190,6 +191,7 @@ public class EmployeeFormController implements Initializable {
             new Alert(Alert.AlertType.CONFIRMATION,"User Updated !").show();
             clearTextBoxes();
             loadTable();
+            setEmployeeId();
         }else{
             new Alert(Alert.AlertType.ERROR,"User Not Updated !").show();
         }

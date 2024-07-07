@@ -39,4 +39,9 @@ public class SupplierBoImpl implements SupplierBo {
     public boolean deleteSupplier(String supplierId) {
         return supplierDao.delete(supplierId);
     }
+
+    @Override
+    public String generateSupplierID() {
+        return supplierDao.generateSupplierId();
+    }
 }

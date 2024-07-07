@@ -151,6 +151,7 @@ public class ItemFormController implements Initializable {
             new Alert(Alert.AlertType.CONFIRMATION,"Item Updated !").show();
             clearTextBoxes();
             loadTable();
+            setItemId();
         }else{
             new Alert(Alert.AlertType.ERROR,"Item Not Updated !").show();
         }
@@ -162,6 +163,7 @@ public class ItemFormController implements Initializable {
             new Alert(Alert.AlertType.CONFIRMATION,"Item Successfully Deleted").show();
             clearTextBoxes();
             loadTable();
+            setItemId();
         }else{
             new Alert(Alert.AlertType.CONFIRMATION,"Item Not Deleted").show();
         }
@@ -182,6 +184,7 @@ public class ItemFormController implements Initializable {
             new Alert(Alert.AlertType.CONFIRMATION,"Item Add !").show();
             clearTextBoxes();
             loadTable();
+            setItemId();
         }else{
             new Alert(Alert.AlertType.CONFIRMATION,"Item Not Add !").show();
         }
@@ -208,7 +211,6 @@ public class ItemFormController implements Initializable {
     }
 
     private void clearTextBoxes() {
-        txtIteamCode.setText(null);
         txtSupplierId.setText(null);
         txtName.setText(null);
         txtQty.setText(null);
@@ -216,7 +218,9 @@ public class ItemFormController implements Initializable {
         txtPrice.setText(null);
         txtPrice.setText(null);
     }
-
+    private void setItemId(){
+        txtIteamCode.setText(itemBo.generateItemId());
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         colIteamcode.setCellValueFactory(new PropertyValueFactory<>("itemCode"));
@@ -226,5 +230,6 @@ public class ItemFormController implements Initializable {
         colPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
         colsupplier.setCellValueFactory(new PropertyValueFactory<>("supplier"));
         loadTable();
+        setItemId();
     }
 }

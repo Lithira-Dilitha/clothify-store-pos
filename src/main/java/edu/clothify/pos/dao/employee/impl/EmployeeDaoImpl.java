@@ -10,6 +10,8 @@ import org.modelmapper.ModelMapper;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class EmployeeDaoImpl implements EmployeeDao {
     @Override
@@ -40,6 +42,29 @@ public class EmployeeDaoImpl implements EmployeeDao {
         return new ModelMapper().map(employee, Employee.class);
     }
 
+    @Override
+    public String generateEmployeeId() {
+        Session session = HibernateUtil.getSession();
+        session.getTransaction().begin();
+        String lastEmployeeId = session.createQuery("SELECT o.employeeId FROM EmployeeEntity o ORDER BY o.employeeId DESC", String.class)
+                .setMaxResults(1)
+                .uniqueResult();
+        String newEmployeeId = "";
+        if(lastEmployeeId == null){
+            newEmployeeId="E0001";
+        }else {
+            Pattern pattern = Pattern.compile("E(\\d+)");
+            Matcher matcher = pattern.matcher(lastEmployeeId);
+            if(matcher.find()){
+                int number = Integer.parseInt(matcher.group(1));
+                number++;
+                newEmployeeId =String.format("E%04d",number);
+            }
+        }
+        session.getTransaction().commit();
+        session.close();
+        return newEmployeeId;
+    }
 
 
     @Override

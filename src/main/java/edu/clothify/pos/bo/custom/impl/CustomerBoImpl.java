@@ -37,4 +37,9 @@ public class CustomerBoImpl implements CustomerBo {
         return customerDao.delete(customerId);
     }
 
+    @Override
+    public String generateCustomerId() {
+        return customerDao.generateCustomerId();
+    }
+
 }

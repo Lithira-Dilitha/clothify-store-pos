@@ -191,6 +191,7 @@ public class OrderFormController implements Initializable {
         lblCustomerEmail.setText(null);
         lblCustomerName.setText(null);
         lblNetTotal.setText(null);
+        txtQtyformCustomer.setText(null);
         tblCart.setItems(null);
     }
 
@@ -216,6 +217,7 @@ public class OrderFormController implements Initializable {
             if(isAdd){
                 new Alert(Alert.AlertType.CONFIRMATION,"Order Placed !").show();
                 ClearTextBoxes();
+                setOrderId();
             }else{
                 new Alert(Alert.AlertType.ERROR,"Order Not Placed !").show();
             }

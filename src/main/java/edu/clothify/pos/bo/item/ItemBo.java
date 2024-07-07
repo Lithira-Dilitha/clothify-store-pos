@@ -14,4 +14,5 @@ public interface ItemBo extends SuperBo {
     boolean updateItem(String itemId ,Item item);
     boolean deleteItem(String itemId);
     boolean updateStock(List<OrderDetails>list);
+    String generateItemId();
 }

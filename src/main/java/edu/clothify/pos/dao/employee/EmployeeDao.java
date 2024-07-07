@@ -9,4 +9,5 @@ import java.util.List;
 public interface EmployeeDao extends CrudDao<EmployeeEntity> {
     List<Employee> getAllEmployeeByIsActiveTrue();
     Employee getEmployeeById(String employeeId);
+    String generateEmployeeId();
 }

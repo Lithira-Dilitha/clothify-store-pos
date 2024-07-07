@@ -39,7 +39,12 @@ public class UserBoImpl implements UserBo {
     }
 
     @Override
-    public User getUserBiEmail(String userEmail) {
+    public User getUserByEmail(String userEmail) {
         return userDao.getUserByEmail(userEmail);
+    }
+
+    @Override
+    public String generateUserId() {
+        return userDao.generateUserId();
     }
 }

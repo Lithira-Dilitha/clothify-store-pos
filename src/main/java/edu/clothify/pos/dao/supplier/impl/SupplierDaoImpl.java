@@ -13,6 +13,8 @@ import org.modelmapper.ModelMapper;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SupplierDaoImpl implements SupplierDao {
 
@@ -83,5 +85,29 @@ public class SupplierDaoImpl implements SupplierDao {
         session.getTransaction().commit();
         session.close();
         return mapper.map(supplier,Supplier.class);
+    }
+
+    @Override
+    public String generateSupplierId() {
+        Session session = HibernateUtil.getSession();
+        session.getTransaction().begin();
+        String lastOrderId = session.createQuery("SELECT s.supplierId FROM SupplierEntity s ORDER BY s.supplierId DESC", String.class)
+                .setMaxResults(1)
+                .uniqueResult();
+        String newOrderId = "";
+        if(lastOrderId == null){
+            newOrderId="S0001";
+        }else {
+            Pattern pattern = Pattern.compile("S(\\d+)");
+            Matcher matcher = pattern.matcher(lastOrderId);
+            if(matcher.find()){
+                int number = Integer.parseInt(matcher.group(1));
+                number++;
+                newOrderId =String.format("S%04d",number);
+            }
+        }
+        session.getTransaction().commit();
+        session.close();
+        return newOrderId;
     }
 }

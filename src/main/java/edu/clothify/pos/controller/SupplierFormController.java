@@ -143,6 +143,7 @@ public class SupplierFormController implements Initializable {
             new Alert(Alert.AlertType.CONFIRMATION,"Supplier Updated !").show();
             clearTextBoxes();
             loadTable();
+            setSupplierId();
         }else{
             new Alert(Alert.AlertType.ERROR,"Supplier Not Updated !").show();
         }
@@ -166,7 +167,6 @@ public class SupplierFormController implements Initializable {
     }
 
     private void clearTextBoxes() {
-        txtSupplierId.setText(null);
         txtName.setText(null);
         txtCompany.setText(null);
         txtEmail.setText(null);
@@ -178,6 +178,7 @@ public class SupplierFormController implements Initializable {
             new Alert(Alert.AlertType.CONFIRMATION,"Supplier Updated !").show();
             clearTextBoxes();
             loadTable();
+            setSupplierId();
         }else{
             new Alert(Alert.AlertType.ERROR,"Supplier Not Updated !").show();
         }
@@ -196,11 +197,14 @@ public class SupplierFormController implements Initializable {
             new Alert(Alert.AlertType.CONFIRMATION,"Supplier Updated !").show();
             clearTextBoxes();
             loadTable();
+            setSupplierId();
         }else{
             new Alert(Alert.AlertType.ERROR,"Supplier Not Updated !").show();
         }
     }
-
+    private void setSupplierId(){
+        txtSupplierId.setText(supplierBo.generateSupplierID());
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         colSupplerId.setCellValueFactory(new PropertyValueFactory<>("supplierId"));
@@ -208,5 +212,6 @@ public class SupplierFormController implements Initializable {
         ColCompany.setCellValueFactory(new PropertyValueFactory<>("company"));
         ColEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         loadTable();
+        setSupplierId();
     }
 }

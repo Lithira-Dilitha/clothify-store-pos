@@ -10,5 +10,6 @@ public interface UserBo extends SuperBo {
     User getUserById(String userId);
     boolean updateUser(String UserId ,User user);
     boolean deleteUser(String userId);
-    User getUserBiEmail(String userEmail);
+    User getUserByEmail(String userEmail);
+    String generateUserId();
 }
