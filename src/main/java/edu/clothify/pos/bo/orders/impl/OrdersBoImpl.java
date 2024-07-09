@@ -7,12 +7,10 @@ import edu.clothify.pos.bo.orders.OrdersBo;
 import edu.clothify.pos.dao.DaoFactory;
 import edu.clothify.pos.dao.orders.OrdersDao;
 import edu.clothify.pos.dto.Orders;
-import edu.clothify.pos.entity.ItemEntity;
 import edu.clothify.pos.entity.OrdersEntity;
 import edu.clothify.pos.utill.BoType;
 import edu.clothify.pos.utill.DaoType;
 import org.modelmapper.ModelMapper;
-
 public class OrdersBoImpl implements OrdersBo {
     OrdersDao ordersDao = DaoFactory.getInstance().getDao(DaoType.Orders);
     OrderDetailsBo orderDetailsBo = BoFactory.getInstance().getBo(BoType.ORDER_DETAILS);
@@ -29,7 +27,7 @@ public class OrdersBoImpl implements OrdersBo {
         if(isAdd){
             boolean isOrderDetailsAdd = orderDetailsBo.addOrderDetails(order.getOrderDetails());
             if(isOrderDetailsAdd){
-               return itemBo.updateStock(order.getOrderDetails());
+                return itemBo.updateStock(order.getOrderDetails());
             }
         }
         return false;
