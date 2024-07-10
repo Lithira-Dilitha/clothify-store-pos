@@ -1,10 +1,14 @@
 package edu.clothify.pos.dao.orders.impl;
 
 import edu.clothify.pos.dao.orders.OrdersDao;
+import edu.clothify.pos.entity.ItemEntity;
+import edu.clothify.pos.entity.OrderDetailsEntity;
 import edu.clothify.pos.entity.OrdersEntity;
 import edu.clothify.pos.utill.HibernateUtil;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -40,5 +44,6 @@ public class OrdersDaoImpl implements OrdersDao {
         session.getTransaction().begin();
         session.persist(order);
         return true;
+
     }
 }

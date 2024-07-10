@@ -14,6 +14,8 @@ public class OrderDetailDaoImpl implements OrderDetailsDao {
         Session session = HibernateUtil.getSession();
         session.getTransaction().begin();
         session.persist(orderDetails);
+        session.getTransaction().commit();
+        session.close();
         return true;
     }
 

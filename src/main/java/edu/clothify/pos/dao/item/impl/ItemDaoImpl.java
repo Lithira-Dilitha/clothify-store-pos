@@ -99,7 +99,7 @@ public class ItemDaoImpl implements ItemDao {
     }
 
     @Override
-    public boolean updateStock(List<OrderDetailsEntity> list) {
+    public boolean  updateStock(List<OrderDetailsEntity> list) {
         boolean isAdd = false;
         for (OrderDetailsEntity orderDetailsEntity :list){
             isAdd = updateStock(orderDetailsEntity.getQty(),orderDetailsEntity.getItemCode());

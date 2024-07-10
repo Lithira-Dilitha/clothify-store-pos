@@ -163,7 +163,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="33.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="33.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/icons/itemIcon.png" />
                </image>
@@ -187,7 +187,7 @@
             <Font name="System Bold" size="16.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="33.0" fitWidth="37.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="28.0" fitWidth="26.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/icons/logouticon.png" />
                </image>

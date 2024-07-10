@@ -10,5 +10,6 @@ public class ChangePasswordFormController {
     public JFXPasswordField txtEnterNewPassword;
 
     public void btnChanegPasswordOnAction(ActionEvent actionEvent) {
+
     }
 }
