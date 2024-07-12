@@ -36,10 +36,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class OrderFormController implements Initializable {
     public JFXButton btnDasshBoard;
@@ -212,10 +209,18 @@ public class OrderFormController implements Initializable {
                         cartTable.getItemCode(),
                         cartTable.getQty()));
             });
+            Map<String,Object> parameters = new HashMap<>();
+            parameters.put("OrderId",lblOrderId.getText());
+            parameters.put("CustomerId",cmbCustId.getValue());
+            parameters.put("Name",lblCustomerName.getText());
+            parameters.put("Email",lblCustomerEmail.getText());
+            parameters.put("Total",Double.parseDouble(lblNetTotal.getText()));
+
             Orders orders = new Orders(lblOrderId.getText(), cmbCustId.getValue().toString(), date, orderDetailsList);
             boolean isAdd = ordersBo.placeOrder(orders);
             if(isAdd){
                 new Alert(Alert.AlertType.CONFIRMATION,"Order Placed !").show();
+                ordersBo.generateBill(cartList,parameters);
                 ClearTextBoxes();
                 setOrderId();
             }else{
@@ -265,7 +270,7 @@ public class OrderFormController implements Initializable {
         for(CartTable cartObject : cartList){
             total += cartObject.getTotal();
         }
-        lblNetTotal.setText(String.valueOf(total)+"/=");
+        lblNetTotal.setText(String.valueOf(total));
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){

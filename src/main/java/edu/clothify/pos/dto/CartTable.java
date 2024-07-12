@@ -15,5 +15,5 @@ public class CartTable {
     private Integer qty;
     private String size;
     private Double uniPrice;
-    private Double Total;
+    private Double total;
 }

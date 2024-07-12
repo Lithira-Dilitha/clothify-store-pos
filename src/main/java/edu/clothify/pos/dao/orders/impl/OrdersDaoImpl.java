@@ -43,6 +43,7 @@ public class OrdersDaoImpl implements OrdersDao {
         Session session = HibernateUtil.getSession();
         session.getTransaction().begin();
         session.persist(order);
+        session.getTransaction().commit();
         return true;
 
     }
