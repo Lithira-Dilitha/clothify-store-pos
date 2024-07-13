@@ -29,6 +29,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.IOException;
 import java.net.URL;
@@ -68,6 +70,9 @@ public class OrderFormController implements Initializable {
     public JFXTextField txtQtyformCustomer;
     public TableColumn colTotal;
     public Label lblTime;
+    public JFXButton btnReturnOrder;
+    public JFXButton btnViewBill;
+    JasperPrint printBill;
 
     CustomerBo customerBo = BoFactory.getInstance().getBo(BoType.CUSTOMER);
     ItemBo itemBo = BoFactory.getInstance().getBo(BoType.ITEM);
@@ -211,7 +216,7 @@ public class OrderFormController implements Initializable {
             });
             Map<String,Object> parameters = new HashMap<>();
             parameters.put("OrderId",lblOrderId.getText());
-            parameters.put("CustomerId",cmbCustId.getValue());
+            parameters.put("CustomerId",cmbCustId.getValue().toString());
             parameters.put("Name",lblCustomerName.getText());
             parameters.put("Email",lblCustomerEmail.getText());
             parameters.put("Total",Double.parseDouble(lblNetTotal.getText()));
@@ -220,7 +225,9 @@ public class OrderFormController implements Initializable {
             boolean isAdd = ordersBo.placeOrder(orders);
             if(isAdd){
                 new Alert(Alert.AlertType.CONFIRMATION,"Order Placed !").show();
-                ordersBo.generateBill(cartList,parameters);
+
+                printBill = ordersBo.generateBill(cartList, parameters);
+
                 ClearTextBoxes();
                 setOrderId();
             }else{
@@ -290,5 +297,12 @@ public class OrderFormController implements Initializable {
         cmbItemId.getSelectionModel().selectedItemProperty().addListener((observable,oldValue,newValue)->{
             setItemDetailsLbls((String) newValue);
         });
+    }
+
+    public void btnReturnOrderOnAction(ActionEvent actionEvent) {
+    }
+
+    public void btnViewBillOnAction(ActionEvent actionEvent) {
+        JasperViewer.viewReport(printBill, false);
     }
 }

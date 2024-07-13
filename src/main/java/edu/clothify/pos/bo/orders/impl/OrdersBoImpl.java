@@ -13,12 +13,9 @@ import edu.clothify.pos.utill.BoType;
 import edu.clothify.pos.utill.DaoType;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-import net.sf.jasperreports.engine.design.JasperDesign;
-import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 import org.modelmapper.ModelMapper;
 
-import java.io.File;
 import java.util.List;
 import java.util.Map;
 
@@ -45,14 +42,14 @@ public class OrdersBoImpl implements OrdersBo {
     }
 
     @Override
-    public void generateBill(List<CartTable> list, Map<String,Object> parameters) {
+    public JasperPrint generateBill(List<CartTable> list, Map<String,Object> parameters) {
         try {
 
             String path = "src/main/resources/reports/invoice.jrxml";
             JasperReport jasperReport = JasperCompileManager.compileReport(path);
             JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(list);
-            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,null,dataSource);
-            JasperViewer.viewReport(jasperPrint, false);
+            var jasperPrint = JasperFillManager.fillReport(jasperReport,parameters,dataSource);
+            return jasperPrint;
         } catch (JRException e) {
             throw new RuntimeException(e);
         }

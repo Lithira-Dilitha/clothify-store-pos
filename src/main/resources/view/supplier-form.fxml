@@ -92,7 +92,7 @@
       </Label>
       <Label layoutX="970.0" layoutY="84.0" prefHeight="28.0" prefWidth="78.0" text="Label" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#34495e" height="756.0" stroke="BLACK" strokeType="INSIDE" width="215.0" />
-      <JFXButton fx:id="btnDasshBoard" layoutX="38.0" layoutY="162.0" onAction="#btnDasshBoardOnAction" prefHeight="56.0" prefWidth="170.0" style="-fx-background-color: #ECF0F1;" text="Dashboard">
+      <JFXButton fx:id="btnDasshBoard" layoutX="27.0" layoutY="162.0" onAction="#btnDasshBoardOnAction" prefHeight="56.0" prefWidth="170.0" style="-fx-background-color: #ECF0F1;" text="Dashboard">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -107,7 +107,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton fx:id="btnCustomer" layoutX="37.0" layoutY="254.0" onAction="#btnCustomerOnAction" prefHeight="56.0" prefWidth="170.0" style="-fx-background-color: #ECF0F1;" text="Customer">
+      <JFXButton fx:id="btnCustomer" layoutX="27.0" layoutY="254.0" onAction="#btnCustomerOnAction" prefHeight="56.0" prefWidth="170.0" style="-fx-background-color: #ECF0F1;" text="Customer">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -122,7 +122,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton fx:id="btnOrder" layoutX="38.0" layoutY="352.0" onAction="#btnOrderOnAction" prefHeight="56.0" prefWidth="170.0" style="-fx-background-color: #ECF0F1;" text="Order">
+      <JFXButton fx:id="btnOrder" layoutX="27.0" layoutY="352.0" onAction="#btnOrderOnAction" prefHeight="56.0" prefWidth="170.0" style="-fx-background-color: #ECF0F1;" text="Order">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -137,7 +137,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton fx:id="btnItem" layoutX="38.0" layoutY="443.0" onAction="#btnIteamOnAction" prefHeight="56.0" prefWidth="170.0" style="-fx-background-color: #ECF0F1;" text="Item">
+      <JFXButton fx:id="btnItem" layoutX="27.0" layoutY="443.0" onAction="#btnIteamOnAction" prefHeight="56.0" prefWidth="170.0" style="-fx-background-color: #ECF0F1;" text="Item">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -152,7 +152,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton fx:id="btnSupplier" layoutX="39.0" layoutY="530.0" onAction="#btnSupplierOnAction" prefHeight="56.0" prefWidth="170.0" style="-fx-background-color: #ECF0F1;" text="Supplier">
+      <JFXButton fx:id="btnSupplier" layoutX="27.0" layoutY="530.0" onAction="#btnSupplierOnAction" prefHeight="56.0" prefWidth="170.0" style="-fx-background-color: #ECF0F1;" text="Supplier">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -167,7 +167,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton fx:id="btnLogOut" layoutX="59.0" layoutY="691.0" onAction="#btnLogOutOnAction" prefHeight="35.0" prefWidth="135.0" style="-fx-background-color: #ECF0F1;" text="Log out">
+      <JFXButton fx:id="btnLogOut" layoutX="48.0" layoutY="691.0" onAction="#btnLogOutOnAction" prefHeight="35.0" prefWidth="135.0" style="-fx-background-color: #ECF0F1;" text="Log out">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
