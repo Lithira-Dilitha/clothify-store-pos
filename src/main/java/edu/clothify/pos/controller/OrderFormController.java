@@ -72,6 +72,7 @@ public class OrderFormController implements Initializable {
     public Label lblTime;
     public JFXButton btnReturnOrder;
     public JFXButton btnViewBill;
+    public JFXTextField txtEmployeeId;
     JasperPrint printBill;
 
     CustomerBo customerBo = BoFactory.getInstance().getBo(BoType.CUSTOMER);
@@ -221,7 +222,7 @@ public class OrderFormController implements Initializable {
             parameters.put("Email",lblCustomerEmail.getText());
             parameters.put("Total",Double.parseDouble(lblNetTotal.getText()));
 
-            Orders orders = new Orders(lblOrderId.getText(), cmbCustId.getValue().toString(), date, orderDetailsList);
+            Orders orders = new Orders(lblOrderId.getText(), cmbCustId.getValue().toString(), date, orderDetailsList,txtEmployeeId.getText());
             boolean isAdd = ordersBo.placeOrder(orders);
             if(isAdd){
                 new Alert(Alert.AlertType.CONFIRMATION,"Order Placed !").show();

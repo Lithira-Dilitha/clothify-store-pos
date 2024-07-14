@@ -1,8 +1,6 @@
 package edu.clothify.pos.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,6 +18,11 @@ import java.util.List;
 public class OrdersEntity {
     @Id
     private String OrderId;
-    private String CustomerId;
     private Date OrderDate;
+    @ManyToOne
+    @JoinColumn(name ="CustomerId",nullable = false)
+    private CustomerEntity customer;
+    @ManyToOne
+    @JoinColumn(name ="userId")
+    private UserEntity user;
 }
