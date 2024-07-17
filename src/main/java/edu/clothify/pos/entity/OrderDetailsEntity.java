@@ -1,8 +1,7 @@
 package edu.clothify.pos.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import edu.clothify.pos.bo.orderdetails.OrderDetailsId;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,8 +14,7 @@ import lombok.ToString;
 @Entity
 @Table(name = "orderDetails")
 public class OrderDetailsEntity {
-    @Id
-    private String OrderId;
-    private String ItemCode;
-    private Integer Qty;
+    @EmbeddedId
+    private OrderDetailsId id;
+    private Integer qty;
 }

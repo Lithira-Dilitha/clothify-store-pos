@@ -42,7 +42,7 @@ public class ItemDaoImpl implements ItemDao {
         query.setParameter("qty",entity.getQty());
         query.setParameter("price",entity.getPrice());
         query.setParameter("isActive",entity.getIsActive());
-        query.setParameter("supplier",entity.getSupplier());
+        query.setParameter("supplier",entity.getSupplierId());
         query.setParameter("itemCode",id);
         query.executeUpdate();
         session.getTransaction().commit();
@@ -102,7 +102,7 @@ public class ItemDaoImpl implements ItemDao {
     public boolean  updateStock(List<OrderDetailsEntity> list) {
         boolean isAdd = false;
         for (OrderDetailsEntity orderDetailsEntity :list){
-            isAdd = updateStock(orderDetailsEntity.getQty(),orderDetailsEntity.getItemCode());
+          //  isAdd = updateStock(orderDetailsEntity.,orderDetailsEntity.getItem().getItemCode());
         }
         System.out.println(isAdd);
         return isAdd;

@@ -132,7 +132,7 @@ public class ItemFormController implements Initializable {
         txtSize.setText(item.getSize());
         txtQty.setText(String.valueOf(item.getQty()));
         txtPrice.setText(String.valueOf(item.getPrice()));
-        txtSupplierId.setText(item.getSupplier());
+        txtSupplierId.setText(item.getSupplierId());
     }
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
@@ -202,7 +202,7 @@ public class ItemFormController implements Initializable {
                             item.getSize(),
                             item.getQty(),
                             item.getPrice(),
-                            item.getSupplier(),
+                            item.getSupplierId(),
                             item.getIsActive()
                     )
             );
@@ -228,7 +228,7 @@ public class ItemFormController implements Initializable {
         colSize.setCellValueFactory(new PropertyValueFactory<>("size"));
         colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
         colPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
-        colsupplier.setCellValueFactory(new PropertyValueFactory<>("supplier"));
+        colsupplier.setCellValueFactory(new PropertyValueFactory<>("supplierId"));
         loadTable();
         setItemId();
     }

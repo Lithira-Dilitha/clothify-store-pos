@@ -260,7 +260,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXTextField fx:id="txtEmployeeId" layoutX="240.0" layoutY="459.0" prefHeight="35.0" prefWidth="154.0" promptText="Qty" text="Employee Id">
+      <JFXTextField fx:id="txtEmployeeId" layoutX="240.0" layoutY="459.0" prefHeight="35.0" prefWidth="154.0" promptText="Employee Id">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

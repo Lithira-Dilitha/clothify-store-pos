@@ -2,6 +2,7 @@ package edu.clothify.pos.bo.orders;
 
 import edu.clothify.pos.bo.SuperBo;
 import edu.clothify.pos.dto.CartTable;
+import edu.clothify.pos.dto.OrderDetails;
 import edu.clothify.pos.dto.Orders;
 import net.sf.jasperreports.engine.JasperPrint;
 

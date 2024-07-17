@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface OrderDetailsBo extends SuperBo {
     boolean addOrderDetails(List<OrderDetails> orderDetailsList);
+    String getOrderDetailsId();
 }

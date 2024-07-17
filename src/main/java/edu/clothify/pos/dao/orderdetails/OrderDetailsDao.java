@@ -8,4 +8,5 @@ import java.util.List;
 public interface OrderDetailsDao extends SuperDao {
     boolean addOrderDetails(OrderDetailsEntity orderDetails);
     boolean addOrderDetails(List<OrderDetailsEntity> OrderDetailsList);
+    String generateOrderDetailsId();
 }

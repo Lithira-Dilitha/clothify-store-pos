@@ -15,6 +15,6 @@ public class Item {
     private String size;
     private Integer qty;
     private Double price;
-    private String supplier;
+    private String supplierId;
     private Boolean isActive;
 }

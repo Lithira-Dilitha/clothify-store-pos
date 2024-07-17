@@ -170,7 +170,7 @@ public class OrderFormController implements Initializable {
 
     ObservableList<CartTable> cartList =FXCollections.observableArrayList();
     public void btnAddToCartOnAction(ActionEvent actionEvent) {
-        String itemCode =(String) cmbItemId.getValue();
+        String itemCode =cmbItemId.getValue().toString();
         int qtyFormCustomer = Integer.parseInt(txtQtyformCustomer.getText());
         String name = lblIteamName.getText();
         Integer qty =Integer.parseInt(lblIteamQty.getText());
@@ -178,6 +178,7 @@ public class OrderFormController implements Initializable {
         double unitPrice = Double.parseDouble(lblUnitePrice.getText());
         Double total = unitPrice*qtyFormCustomer;
         CartTable cartTable = new CartTable(itemCode, name, qtyFormCustomer, size, unitPrice, total);
+        System.out.println("this Is Cart Table Object : "+cartTable);
         if(qtyFormCustomer>qty){
            new  Alert(Alert.AlertType.WARNING,"Invalid Qty").show();
            return;
@@ -222,7 +223,8 @@ public class OrderFormController implements Initializable {
             parameters.put("Email",lblCustomerEmail.getText());
             parameters.put("Total",Double.parseDouble(lblNetTotal.getText()));
 
-            Orders orders = new Orders(lblOrderId.getText(), cmbCustId.getValue().toString(), date, orderDetailsList,txtEmployeeId.getText());
+            Orders orders = new Orders(lblOrderId.getText(),date,cmbCustId.getValue().toString(),orderDetailsList,txtEmployeeId.getText());
+            System.out.println("This is Order Object in Controller : "+orders);
             boolean isAdd = ordersBo.placeOrder(orders);
             if(isAdd){
                 new Alert(Alert.AlertType.CONFIRMATION,"Order Placed !").show();

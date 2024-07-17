@@ -17,12 +17,15 @@ import java.util.List;
 @Table(name = "Orders")
 public class OrdersEntity {
     @Id
-    private String OrderId;
-    private Date OrderDate;
+    private String orderId;
+    private Date orderDate;
+
     @ManyToOne
-    @JoinColumn(name ="CustomerId",nullable = false)
+    @JoinColumn(name ="customerId")
     private CustomerEntity customer;
+
     @ManyToOne
     @JoinColumn(name ="userId")
     private UserEntity user;
+
 }

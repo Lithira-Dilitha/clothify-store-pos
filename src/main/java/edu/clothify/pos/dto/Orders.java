@@ -1,5 +1,6 @@
 package edu.clothify.pos.dto;
 
+import edu.clothify.pos.entity.ItemEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,9 +13,9 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 public class Orders {
-    private String OrderId;
-    private String CustomerId;
-    private Date OrderDate;
-    private List<OrderDetails> OrderDetails;
+    private String orderId;
+    private Date orderDate;
+    private String customerId;
+    private List<OrderDetails> orderDetailsList;
     private String userId;
 }

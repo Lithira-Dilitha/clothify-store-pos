@@ -1,12 +1,14 @@
 package edu.clothify.pos.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -21,6 +23,11 @@ public class ItemEntity {
     private String size;
     private Integer qty;
     private Double price;
-    private String supplier;
+    private String supplierId;
     private Boolean isActive;
+
+    @ManyToOne
+    @JoinColumn(name = "supplierId", nullable = false,insertable=false, updatable=false)
+    private SupplierEntity supplier;
+
 }

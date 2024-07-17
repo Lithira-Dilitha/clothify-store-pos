@@ -18,7 +18,7 @@ public class OrdersDaoImpl implements OrdersDao {
     public String generateOrderId() {
         Session session = HibernateUtil.getSession();
         session.getTransaction().begin();
-        String lastOrderId = session.createQuery("SELECT o.OrderId FROM OrdersEntity o ORDER BY o.OrderId DESC", String.class)
+        String lastOrderId = session.createQuery("SELECT o.orderId FROM OrdersEntity o ORDER BY o.orderId DESC", String.class)
                 .setMaxResults(1)
                 .uniqueResult();
         String newOrderId = "";
@@ -40,6 +40,7 @@ public class OrdersDaoImpl implements OrdersDao {
 
     @Override
     public boolean placeOrder(OrdersEntity order) {
+        System.out.println("this is Order Entity Object :"+order);
         Session session = HibernateUtil.getSession();
         session.getTransaction().begin();
         session.persist(order);

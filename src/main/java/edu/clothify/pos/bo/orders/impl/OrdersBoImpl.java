@@ -7,6 +7,7 @@ import edu.clothify.pos.bo.orders.OrdersBo;
 import edu.clothify.pos.dao.DaoFactory;
 import edu.clothify.pos.dao.orders.OrdersDao;
 import edu.clothify.pos.dto.CartTable;
+import edu.clothify.pos.dto.OrderDetails;
 import edu.clothify.pos.dto.Orders;
 import edu.clothify.pos.entity.OrdersEntity;
 import edu.clothify.pos.utill.BoType;
@@ -31,11 +32,12 @@ public class OrdersBoImpl implements OrdersBo {
 
     @Override
     public boolean placeOrder(Orders order) {
+        System.out.println(order);
         boolean isAdd = ordersDao.placeOrder(mapper.map(order, OrdersEntity.class));
         if(isAdd){
-            boolean isOrderDetailsAdd = orderDetailsBo.addOrderDetails(order.getOrderDetails());
+            boolean isOrderDetailsAdd = orderDetailsBo.addOrderDetails(order.getOrderDetailsList());
             if(isOrderDetailsAdd){
-                return itemBo.updateStock(order.getOrderDetails());
+                return itemBo.updateStock(order.getOrderDetailsList());
             }
         }
         return false;
