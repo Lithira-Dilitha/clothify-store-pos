@@ -9,4 +9,5 @@ import java.util.List;
 public interface OrdersDao extends SuperDao {
     String generateOrderId();
     boolean placeOrder(OrdersEntity order);
+    Long getAllOrdersCount();
 }

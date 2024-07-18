@@ -260,10 +260,6 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXTextField fx:id="txtEmployeeId" layoutX="240.0" layoutY="459.0" prefHeight="35.0" prefWidth="154.0" promptText="Employee Id">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </JFXTextField>
+      <JFXComboBox fx:id="cmbEmployeeId" layoutX="255.0" layoutY="443.0" prefHeight="25.0" prefWidth="154.0" promptText="Employee Id" />
    </children>
 </AnchorPane>

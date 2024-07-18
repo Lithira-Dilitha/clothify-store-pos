@@ -13,4 +13,5 @@ public interface OrdersBo extends SuperBo {
     String getOrderId();
     boolean placeOrder(Orders order);
     JasperPrint generateBill(List<CartTable> list, Map<String,Object> parameters);
+    Long getAllOrdersCount();
 }

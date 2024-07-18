@@ -48,4 +48,15 @@ public class OrdersDaoImpl implements OrdersDao {
         return true;
 
     }
+
+    @Override
+    public Long getAllOrdersCount() {
+        Session session = HibernateUtil.getSession();
+        session.getTransaction().begin();
+        Object orderCount = session.createQuery("SELECT COUNT(*) FROM OrdersEntity")
+                .uniqueResult();
+        session.getTransaction().commit();
+        session.close();
+        return (Long) orderCount;
+    }
 }

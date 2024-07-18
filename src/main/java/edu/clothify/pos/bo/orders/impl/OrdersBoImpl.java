@@ -57,5 +57,10 @@ public class OrdersBoImpl implements OrdersBo {
         }
     }
 
+    @Override
+    public Long getAllOrdersCount() {
+        return ordersDao.getAllOrdersCount();
+    }
+
 
 }

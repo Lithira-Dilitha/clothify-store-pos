@@ -12,4 +12,5 @@ public interface UserBo extends SuperBo {
     boolean deleteUser(String userId);
     User getUserByEmail(String userEmail);
     String generateUserId();
+    Long getAllEmployeeCount();
 }

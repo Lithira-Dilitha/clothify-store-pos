@@ -12,4 +12,5 @@ public interface CustomerBo extends SuperBo {
     boolean updateCustomer(String CustomerId ,Customer customer);
     boolean deleteCustomer(String customerId);
     String generateCustomerId();
+    Long getAllCustomerCount();
 }

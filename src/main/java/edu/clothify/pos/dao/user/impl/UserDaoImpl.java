@@ -1,9 +1,7 @@
 package edu.clothify.pos.dao.user.impl;
 
 import edu.clothify.pos.dao.user.UserDao;
-import edu.clothify.pos.dto.Employee;
 import edu.clothify.pos.dto.User;
-import edu.clothify.pos.entity.EmployeeEntity;
 import edu.clothify.pos.entity.UserEntity;
 import edu.clothify.pos.utill.HibernateUtil;
 import org.hibernate.Session;
@@ -81,6 +79,17 @@ public class UserDaoImpl implements UserDao {
         session.getTransaction().commit();
         session.close();
         return newUserId;
+    }
+
+    @Override
+    public Long getAllEmployeeCount() {
+        Session session = HibernateUtil.getSession();
+        session.getTransaction().begin();
+        Object employeeCount = session.createQuery("SELECT COUNT(*) FROM UserEntity WHERE role = 'employee'")
+                .uniqueResult();
+        session.getTransaction().commit();
+        session.close();
+        return (Long) employeeCount;
     }
 
     @Override

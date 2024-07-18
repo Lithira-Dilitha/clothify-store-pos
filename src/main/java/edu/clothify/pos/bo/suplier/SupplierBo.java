@@ -13,4 +13,5 @@ public interface SupplierBo extends SuperBo {
     boolean updateSupplier(String supplierId ,Supplier supplier);
     boolean deleteSupplier(String supplierId);
     String generateSupplierID();
+    Long getAllSupplierCount();
 }

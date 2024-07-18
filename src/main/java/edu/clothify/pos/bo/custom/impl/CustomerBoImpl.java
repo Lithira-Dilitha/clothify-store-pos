@@ -42,4 +42,9 @@ public class CustomerBoImpl implements CustomerBo {
         return customerDao.generateCustomerId();
     }
 
+    @Override
+    public Long getAllCustomerCount() {
+        return customerDao.getAllCustomerCount();
+    }
+
 }

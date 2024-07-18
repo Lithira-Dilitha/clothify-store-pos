@@ -8,6 +8,7 @@ import edu.clothify.pos.bo.custom.CustomerBo;
 import edu.clothify.pos.bo.item.ItemBo;
 import edu.clothify.pos.bo.orderdetails.OrderDetailsBo;
 import edu.clothify.pos.bo.orders.OrdersBo;
+import edu.clothify.pos.bo.user.UserBo;
 import edu.clothify.pos.dto.*;
 import edu.clothify.pos.utill.BoType;
 import jakarta.persistence.criteria.Order;
@@ -73,12 +74,13 @@ public class OrderFormController implements Initializable {
     public JFXButton btnReturnOrder;
     public JFXButton btnViewBill;
     public JFXTextField txtEmployeeId;
+    public JFXComboBox cmbEmployeeId;
     JasperPrint printBill;
 
     CustomerBo customerBo = BoFactory.getInstance().getBo(BoType.CUSTOMER);
     ItemBo itemBo = BoFactory.getInstance().getBo(BoType.ITEM);
     OrdersBo ordersBo = BoFactory.getInstance().getBo(BoType.ORDERS);
-    OrderDetailsBo orderDetailsBo =BoFactory.getInstance().getBo(BoType.ORDER_DETAILS);
+   UserBo userBo = BoFactory.getInstance().getBo(BoType.USER);
     public void btnDasshBoardOnAction(ActionEvent actionEvent) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/view/employee-dash.fxml"));
@@ -167,6 +169,14 @@ public class OrderFormController implements Initializable {
         });
         cmbItemId.setItems(ids);
     }
+    private void loadEmployeeIds(){
+        List<User> allUserByIsActiveTrue = userBo.getAllUserByIsActiveTrue();
+        ObservableList<String> ids =FXCollections.observableArrayList();
+        allUserByIsActiveTrue.forEach(user -> {
+            ids.add(user.getUserId());
+        });
+        cmbEmployeeId.setItems(ids);
+    }
 
     ObservableList<CartTable> cartList =FXCollections.observableArrayList();
     public void btnAddToCartOnAction(ActionEvent actionEvent) {
@@ -223,7 +233,7 @@ public class OrderFormController implements Initializable {
             parameters.put("Email",lblCustomerEmail.getText());
             parameters.put("Total",Double.parseDouble(lblNetTotal.getText()));
 
-            Orders orders = new Orders(lblOrderId.getText(),date,cmbCustId.getValue().toString(),orderDetailsList,txtEmployeeId.getText());
+            Orders orders = new Orders(lblOrderId.getText(),date,cmbCustId.getValue().toString(),orderDetailsList,cmbEmployeeId.getValue().toString());
             System.out.println("This is Order Object in Controller : "+orders);
             boolean isAdd = ordersBo.placeOrder(orders);
             if(isAdd){
@@ -292,6 +302,7 @@ public class OrderFormController implements Initializable {
         colTotal.setCellValueFactory(new PropertyValueFactory<>("Total"));
         loadCustomerId();
         loadItemId();
+        loadEmployeeIds();
         loadTimeAndDate();
         setOrderId();
         cmbCustId.getSelectionModel().selectedItemProperty().addListener((observable,oldValue,newValue)->{

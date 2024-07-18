@@ -108,4 +108,15 @@ public class CustomerDaoImpl implements CustomerDao {
         session.close();
         return newOrderId;
     }
+
+    @Override
+    public Long getAllCustomerCount() {
+        Session session = HibernateUtil.getSession();
+        session.getTransaction().begin();
+        Object customerCount = session.createQuery("SELECT COUNT(*) FROM CustomerEntity")
+                .uniqueResult();
+        session.getTransaction().commit();
+        session.close();
+        return (Long) customerCount;
+    }
 }

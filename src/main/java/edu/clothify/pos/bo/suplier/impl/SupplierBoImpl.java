@@ -44,4 +44,9 @@ public class SupplierBoImpl implements SupplierBo {
     public String generateSupplierID() {
         return supplierDao.generateSupplierId();
     }
+
+    @Override
+    public Long getAllSupplierCount() {
+        return supplierDao.getAllSupplierCount();
+    }
 }

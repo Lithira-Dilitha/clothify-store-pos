@@ -11,4 +11,5 @@ public interface UserDao extends CrudDao<UserEntity> {
     User getUserById(String employeeId);
     User getUserByEmail(String userEmail);
     String generateUserId();
+    Long getAllEmployeeCount();
 }

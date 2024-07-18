@@ -3,6 +3,8 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -115,7 +117,10 @@
             <Font name="System Bold" size="18.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="33.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="33.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/icons/employeeLight.png" />
+               </image></ImageView>
          </graphic>
          <cursor>
             <Cursor fx:constant="HAND" />
@@ -133,8 +138,85 @@
             </ImageView>
          </graphic>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="125.0" layoutX="263.0" layoutY="141.0" stroke="BLACK" strokeType="INSIDE" width="215.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="125.0" layoutX="825.0" layoutY="141.0" stroke="BLACK" strokeType="INSIDE" width="215.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="125.0" layoutX="536.0" layoutY="141.0" stroke="BLACK" strokeType="INSIDE" width="215.0" />
+      <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#d9d9d9" height="125.0" layoutX="227.0" layoutY="141.0" stroke="#d9d9d9" strokeType="INSIDE" width="215.0" />
+      <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#d9d9d9" height="125.0" layoutX="677.0" layoutY="141.0" stroke="#d9d9d9" strokeType="INSIDE" width="215.0" />
+      <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#d9d9d9" height="125.0" layoutX="453.0" layoutY="141.0" stroke="#d9d9d9" strokeType="INSIDE" width="215.0" />
+      <Label alignment="CENTER" layoutX="254.0" layoutY="154.0" prefHeight="43.0" prefWidth="161.0" text="Employees" textFill="#34495e">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="43.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/icons/employeeDark.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Label>
+      <Label fx:id="lblEmployeecount" alignment="CENTER" layoutX="267.0" layoutY="210.0" prefHeight="43.0" prefWidth="135.0" text="000" textFill="#34495e">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="469.0" layoutY="154.0" prefHeight="43.0" prefWidth="161.0" text="Customers" textFill="#34495e">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="34.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/icons/customerIcon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Label>
+      <Label alignment="CENTER" layoutX="704.0" layoutY="154.0" prefHeight="43.0" prefWidth="161.0" text="Orders" textFill="#34495e">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="34.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/icons/orderIcon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Label>
+      <Label fx:id="lblOrdersCount" alignment="CENTER" layoutX="717.0" layoutY="210.0" prefHeight="43.0" prefWidth="135.0" text="000" textFill="#34495e">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblCustomerCount" alignment="CENTER" layoutX="493.0" layoutY="210.0" prefHeight="43.0" prefWidth="135.0" text="000" textFill="#34495e">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#d9d9d9" height="125.0" layoutX="903.0" layoutY="143.0" stroke="#d9d9d9" strokeType="INSIDE" width="215.0" />
+      <Label alignment="CENTER" layoutX="930.0" layoutY="154.0" prefHeight="43.0" prefWidth="161.0" text="Supplier" textFill="#34495e">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="34.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/icons/supplier.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Label>
+      <Label fx:id="lblSupplier" alignment="CENTER" layoutX="943.0" layoutY="210.0" prefHeight="43.0" prefWidth="135.0" text="000" textFill="#34495e">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <TableView layoutX="254.0" layoutY="343.0" prefHeight="337.0" prefWidth="581.0">
+        <columns>
+          <TableColumn prefWidth="116.0" text="Order ID" />
+          <TableColumn prefWidth="194.0" text="Order Date" />
+            <TableColumn prefWidth="143.0" text="Customer ID" />
+            <TableColumn prefWidth="127.0" text="Employee id" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

@@ -110,4 +110,15 @@ public class SupplierDaoImpl implements SupplierDao {
         session.close();
         return newOrderId;
     }
+
+    @Override
+    public Long getAllSupplierCount() {
+        Session session = HibernateUtil.getSession();
+        session.getTransaction().begin();
+        Object employeeCount = session.createQuery("SELECT COUNT(*) FROM SupplierEntity")
+                .uniqueResult();
+        session.getTransaction().commit();
+        session.close();
+        return (Long) employeeCount;
+    }
 }

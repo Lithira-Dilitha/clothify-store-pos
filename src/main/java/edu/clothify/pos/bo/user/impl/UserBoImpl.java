@@ -47,4 +47,9 @@ public class UserBoImpl implements UserBo {
     public String generateUserId() {
         return userDao.generateUserId();
     }
+
+    @Override
+    public Long getAllEmployeeCount() {
+        return userDao.getAllEmployeeCount();
+    }
 }
