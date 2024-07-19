@@ -23,7 +23,7 @@ public class OrdersEntity {
     @ManyToOne
     @JoinColumn(name ="customerId")
     private CustomerEntity customer;
-
+    private Double total;
     @ManyToOne
     @JoinColumn(name ="userId")
     private UserEntity user;

@@ -1,6 +1,7 @@
 package edu.clothify.pos.bo.item.impl;
 
 import edu.clothify.pos.bo.item.ItemBo;
+import edu.clothify.pos.bo.orderdetails.OrderDetailsId;
 import edu.clothify.pos.dao.DaoFactory;
 import edu.clothify.pos.dao.item.ItemDao;
 import edu.clothify.pos.dto.Item;
@@ -43,9 +44,13 @@ public class ItemBoImpl implements ItemBo {
 
     @Override
     public boolean updateStock(List<OrderDetails> list) {
+        System.out.println("this is Update Stock :"+list);
        List<OrderDetailsEntity> itemEntities = new ArrayList<>();
        for (OrderDetails orderDetails : list){
-           itemEntities.add(modelMapper.map(orderDetails, OrderDetailsEntity.class));
+           itemEntities.add(new OrderDetailsEntity(
+                   new OrderDetailsId(orderDetails.getOrderId(),orderDetails.getItemCode()),
+                   orderDetails.getQty()
+           ));
        }
        return itemDao.updateStock(itemEntities);
     }

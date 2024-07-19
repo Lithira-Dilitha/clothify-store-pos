@@ -233,7 +233,9 @@ public class OrderFormController implements Initializable {
             parameters.put("Email",lblCustomerEmail.getText());
             parameters.put("Total",Double.parseDouble(lblNetTotal.getText()));
 
-            Orders orders = new Orders(lblOrderId.getText(),date,cmbCustId.getValue().toString(),orderDetailsList,cmbEmployeeId.getValue().toString());
+            Orders orders = new Orders(lblOrderId.getText(),date,cmbCustId.getValue().toString(),
+                    Double.parseDouble(lblNetTotal.getText()),
+                    orderDetailsList,cmbEmployeeId.getValue().toString());
             System.out.println("This is Order Object in Controller : "+orders);
             boolean isAdd = ordersBo.placeOrder(orders);
             if(isAdd){

@@ -18,12 +18,12 @@
    <children>
       <TableView fx:id="tblCart" layoutX="510.0" layoutY="158.0" prefHeight="318.0" prefWidth="609.0">
          <columns>
-            <TableColumn fx:id="colItemCode" prefWidth="79.0" style="-fx-background-color: A9C6DC;" text="Item Code" />
-            <TableColumn fx:id="colName" prefWidth="104.0" style="-fx-background-color: A9C6DC;" text="Name" />
-            <TableColumn fx:id="colQty" style="-fx-background-color: A9C6DC;" text="Qty" />
-            <TableColumn fx:id="colSize" minWidth="0.0" prefWidth="92.0" style="-fx-background-color: A9C6DC;" text="size" />
-            <TableColumn fx:id="cloUnitPrice" prefWidth="117.0" style="-fx-background-color: A9C6DC;" text="Unit Price" />
-            <TableColumn fx:id="colTotal" prefWidth="136.0" style="-fx-background-color: A9C6DC;" text="Total" />
+            <TableColumn fx:id="colItemCode" prefWidth="79.0" text="Item Code" />
+            <TableColumn fx:id="colName" prefWidth="104.0" text="Name" />
+            <TableColumn fx:id="colQty" text="Qty" />
+            <TableColumn fx:id="colSize" minWidth="0.0" prefWidth="92.0" text="size" />
+            <TableColumn fx:id="cloUnitPrice" prefWidth="117.0" text="Unit Price" />
+            <TableColumn fx:id="colTotal" prefWidth="136.0" text="Total" />
          </columns>
       </TableView>
       <Label alignment="CENTER" layoutX="454.0" layoutY="20.0" prefHeight="50.0" prefWidth="307.0" text="Place Order" textFill="#34495e">

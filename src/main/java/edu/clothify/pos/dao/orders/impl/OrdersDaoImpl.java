@@ -1,19 +1,21 @@
 package edu.clothify.pos.dao.orders.impl;
 
 import edu.clothify.pos.dao.orders.OrdersDao;
+import edu.clothify.pos.dto.Orders;
 import edu.clothify.pos.entity.ItemEntity;
 import edu.clothify.pos.entity.OrderDetailsEntity;
 import edu.clothify.pos.entity.OrdersEntity;
 import edu.clothify.pos.utill.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.modelmapper.ModelMapper;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class OrdersDaoImpl implements OrdersDao {
-
     @Override
     public String generateOrderId() {
         Session session = HibernateUtil.getSession();
@@ -58,5 +60,18 @@ public class OrdersDaoImpl implements OrdersDao {
         session.getTransaction().commit();
         session.close();
         return (Long) orderCount;
+    }
+
+    @Override
+    public List<Orders> getAllOrders() {
+        Session session = HibernateUtil.getSession();
+        session.getTransaction().begin();
+        List<OrdersEntity> ordersEntityList = session.createQuery("from OrdersEntity", OrdersEntity.class)
+                .getResultList();
+        List<Orders> ordersList = new ArrayList<>();
+        ordersEntityList.forEach(orders ->{
+            ordersList.add(new ModelMapper().map(orders,Orders.class));
+        });
+        return ordersList;
     }
 }

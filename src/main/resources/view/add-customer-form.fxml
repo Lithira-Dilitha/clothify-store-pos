@@ -16,10 +16,10 @@
    <children>
       <TableView fx:id="tblCustomerTable" layoutX="228.0" layoutY="114.0" prefHeight="348.0" prefWidth="866.0">
         <columns>
-          <TableColumn fx:id="colCustomerId" prefWidth="109.59999084472656" style="-fx-background-color: A9C6DC;" text="Customer ID" />
-          <TableColumn fx:id="colName" prefWidth="194.39996337890625" style="-fx-background-color: A9C6DC;" text="Name" />
-            <TableColumn fx:id="colAddress" prefWidth="274.4000244140625" style="-fx-background-color: A9C6DC;" text="Address" />
-            <TableColumn fx:id="colEmail" prefWidth="285.0" style="-fx-background-color: A9C6DC;" text="Email" />
+          <TableColumn fx:id="colCustomerId" prefWidth="109.59999084472656" text="Customer ID" />
+          <TableColumn fx:id="colName" prefWidth="194.39996337890625" text="Name" />
+            <TableColumn fx:id="colAddress" prefWidth="274.4000244140625" text="Address" />
+            <TableColumn fx:id="colEmail" prefWidth="285.0" text="Email" />
         </columns>
       </TableView>
       <Label alignment="CENTER" layoutX="525.0" layoutY="14.0" prefHeight="47.0" prefWidth="225.0" text="Manage Customer" textFill="#34495e">

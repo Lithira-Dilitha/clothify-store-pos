@@ -102,7 +102,7 @@ public class ItemDaoImpl implements ItemDao {
     public boolean  updateStock(List<OrderDetailsEntity> list) {
         boolean isAdd = false;
         for (OrderDetailsEntity orderDetailsEntity :list){
-          //  isAdd = updateStock(orderDetailsEntity.,orderDetailsEntity.getItem().getItemCode());
+            isAdd = updateStock(orderDetailsEntity.getQty(),orderDetailsEntity.getId().getItemCode());
         }
         System.out.println(isAdd);
         return isAdd;

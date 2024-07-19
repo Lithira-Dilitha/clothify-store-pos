@@ -107,11 +107,11 @@
       </JFXButton>
       <TableView fx:id="tblEmployeeTable" layoutX="238.0" layoutY="124.0" prefHeight="348.0" prefWidth="866.0">
          <columns>
-            <TableColumn fx:id="colEmployeeId" prefWidth="109.59999084472656" style="-fx-background-color: A9C6DC;" text="Employee Id" />
-            <TableColumn fx:id="colName" prefWidth="194.39996337890625" style="-fx-background-color: A9C6DC;" text="Name" />
-            <TableColumn fx:id="colPassWord" prefWidth="204.0" style="-fx-background-color: A9C6DC;" text="PassWord" />
-            <TableColumn fx:id="colEmail" prefWidth="199.0" style="-fx-background-color: A9C6DC;" text="Email" />
-            <TableColumn fx:id="colRole" prefWidth="156.0" style="-fx-background-color: A9C6DC;" text="Role" />
+            <TableColumn fx:id="colEmployeeId" prefWidth="109.59999084472656" text="Employee Id" />
+            <TableColumn fx:id="colName" prefWidth="194.39996337890625" text="Name" />
+            <TableColumn fx:id="colPassWord" prefWidth="204.0" text="PassWord" />
+            <TableColumn fx:id="colEmail" prefWidth="199.0" text="Email" />
+            <TableColumn fx:id="colRole" prefWidth="156.0" text="Role" />
          </columns>
       </TableView>
       <Label alignment="CENTER" layoutX="535.0" layoutY="24.0" prefHeight="47.0" prefWidth="225.0" text="Manage Employee" textFill="#34495e">
