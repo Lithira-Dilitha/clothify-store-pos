@@ -62,5 +62,10 @@ public class OrdersBoImpl implements OrdersBo {
         return ordersDao.getAllOrdersCount();
     }
 
+    @Override
+    public List<Orders> getAllOrders() {
+        return ordersDao.getAllOrders();
+    }
+
 
 }

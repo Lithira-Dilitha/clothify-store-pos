@@ -6,7 +6,10 @@ import edu.clothify.pos.bo.custom.CustomerBo;
 import edu.clothify.pos.bo.orders.OrdersBo;
 import edu.clothify.pos.bo.suplier.SupplierBo;
 import edu.clothify.pos.bo.user.UserBo;
+import edu.clothify.pos.dto.Orders;
 import edu.clothify.pos.utill.BoType;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,10 +17,14 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class EmployeeDashController implements Initializable {
@@ -32,6 +39,12 @@ public class EmployeeDashController implements Initializable {
     public Label lblOrdersCount;
     public Label lblCustomerCount;
     public Label lblSupplier;
+    public TableView tblOrderDetails;
+    public TableColumn colOrderId;
+    public TableColumn colOrderDate;
+    public TableColumn colCustomerId;
+    public TableColumn colEmployeeId;
+    public TableColumn colTotal;
 
     UserBo userBo = BoFactory.getInstance().getBo(BoType.USER);
     CustomerBo customerBo = BoFactory.getInstance().getBo(BoType.CUSTOMER);
@@ -121,7 +134,14 @@ public class EmployeeDashController implements Initializable {
             throw new RuntimeException(e);
         }
     }
-
+    private void loadTable(){
+        List<Orders> allOrders = ordersBo.getAllOrders();
+        ObservableList<Orders> ordersList = FXCollections.observableArrayList();
+        allOrders.forEach(orders ->{
+                ordersList.add(orders);
+        });
+        tblOrderDetails.setItems(ordersList);
+    }
     private void loaCountCards(){
         lblEmployeecount.setText(userBo.getAllEmployeeCount().toString());
         lblCustomerCount.setText(customerBo.getAllCustomerCount().toString());
@@ -131,6 +151,12 @@ public class EmployeeDashController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        colOrderId.setCellValueFactory(new PropertyValueFactory<>("orderId"));
+        colOrderDate.setCellValueFactory(new PropertyValueFactory<>("orderDate"));
+        colCustomerId.setCellValueFactory(new PropertyValueFactory<>("customerId"));
+        colEmployeeId.setCellValueFactory(new PropertyValueFactory<>("userId"));
+        colTotal .setCellValueFactory(new PropertyValueFactory<>("total"));
         loaCountCards();
+        loadTable();
     }
 }
