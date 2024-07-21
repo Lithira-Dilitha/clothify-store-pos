@@ -6,6 +6,9 @@ import edu.clothify.pos.bo.BoFactory;
 import edu.clothify.pos.bo.custom.CustomerBo;
 import edu.clothify.pos.dto.Customer;
 import edu.clothify.pos.utill.BoType;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,14 +18,19 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -47,6 +55,8 @@ public class AddcustomerFormController implements Initializable {
     public JFXButton btnUpdateCustomer;
     public JFXButton btnSearch;
     public JFXButton btnDelete;
+    public Label lblTime;
+    public Label lblDate;
 
     private CustomerBo customerBo = BoFactory.getInstance().getBo(BoType.CUSTOMER);
 
@@ -58,6 +68,7 @@ public class AddcustomerFormController implements Initializable {
         colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         loadTable();
         setCustomerId();
+        loadTimeAndDate();
     }
 
     public void btnDasshBoardOnAction(ActionEvent actionEvent) {
@@ -170,7 +181,22 @@ public class AddcustomerFormController implements Initializable {
         });
         tblCustomerTable.setItems(customersTable);
     }
+    private void loadTimeAndDate(){
+        Date date = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        lblDate.setText(format.format(date));
 
+        Timeline timeline = new Timeline(new KeyFrame(Duration.ZERO, e->{
+            LocalTime time = LocalTime.now();
+            lblTime.setText(
+                    time.getHour() + " : " + time.getMinute() + " : " + time.getSecond()
+            );
+        }),
+                new KeyFrame(Duration.seconds(1))
+        );
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
+    }
     public void btnUpdateCustomerOnAction(ActionEvent actionEvent) {
         Customer customer = new Customer(
                 txtCustomerId.getText(),

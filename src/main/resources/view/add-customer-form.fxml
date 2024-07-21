@@ -79,18 +79,6 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <Label layoutX="682.0" layoutY="70.0" prefHeight="28.0" prefWidth="78.0" text="Time :">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
-      <Label layoutX="765.0" layoutY="70.0" prefHeight="28.0" prefWidth="78.0" text="Label" />
-      <Label layoutX="856.0" layoutY="70.0" prefHeight="28.0" prefWidth="78.0" text="Date :">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
-      <Label layoutX="950.0" layoutY="70.0" prefHeight="28.0" prefWidth="78.0" text="Label" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#34495e" height="756.0" stroke="BLACK" strokeType="INSIDE" width="215.0" />
       <JFXButton fx:id="btnDasshBoard" layoutX="28.0" layoutY="162.0" onAction="#btnDasshBoardOnAction" prefHeight="56.0" prefWidth="170.0" style="-fx-background-color: #ECF0F1;" text="Dashboard">
          <font>
@@ -193,6 +181,26 @@
                </image>
             </ImageView>
          </graphic>
+      </Label>
+      <Label layoutX="757.0" layoutY="71.0" prefHeight="28.0" prefWidth="78.0" text="Time :">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblTime" layoutX="806.0" layoutY="71.0" prefHeight="28.0" prefWidth="78.0" text="Label">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="931.0" layoutY="71.0" prefHeight="28.0" prefWidth="78.0" text="Date :">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblDate" layoutX="978.0" layoutY="71.0" prefHeight="28.0" prefWidth="78.0" text="Label">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
       </Label>
    </children>
 </AnchorPane>

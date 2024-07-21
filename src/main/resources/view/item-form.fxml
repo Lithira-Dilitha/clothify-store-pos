@@ -81,18 +81,6 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <Label layoutX="692.0" layoutY="80.0" prefHeight="28.0" prefWidth="78.0" text="Time :">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
-      <Label layoutX="775.0" layoutY="80.0" prefHeight="28.0" prefWidth="78.0" text="Label" />
-      <Label layoutX="866.0" layoutY="80.0" prefHeight="28.0" prefWidth="78.0" text="Date :">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
-      <Label layoutX="960.0" layoutY="80.0" prefHeight="28.0" prefWidth="78.0" text="Label" />
       <JFXTextField fx:id="txtName" layoutX="254.0" layoutY="540.0" prefHeight="35.0" prefWidth="178.0" promptText="Name">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -205,6 +193,26 @@
                </image>
             </ImageView>
          </graphic>
+      </Label>
+      <Label layoutX="737.0" layoutY="81.0" prefHeight="28.0" prefWidth="78.0" text="Time :">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblTime" layoutX="786.0" layoutY="81.0" prefHeight="28.0" prefWidth="78.0" text="Label">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="911.0" layoutY="81.0" prefHeight="28.0" prefWidth="78.0" text="Date :">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblDate" layoutX="958.0" layoutY="81.0" prefHeight="28.0" prefWidth="78.0" text="Label">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
       </Label>
    </children>
 </AnchorPane>

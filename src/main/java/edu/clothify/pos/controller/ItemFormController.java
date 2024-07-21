@@ -7,6 +7,9 @@ import edu.clothify.pos.bo.item.ItemBo;
 import edu.clothify.pos.dto.Employee;
 import edu.clothify.pos.dto.Item;
 import edu.clothify.pos.utill.BoType;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,13 +19,18 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -50,6 +58,8 @@ public class ItemFormController implements Initializable {
     public JFXTextField txtName;
     public JFXTextField txtSupplierId;
     public TableColumn colsupplier;
+    public Label lblTime;
+    public Label lblDate;
 
     private ItemBo itemBo = BoFactory.getInstance().getBo(BoType.ITEM);
 
@@ -221,6 +231,22 @@ public class ItemFormController implements Initializable {
     private void setItemId(){
         txtIteamCode.setText(itemBo.generateItemId());
     }
+    private void loadTimeAndDate(){
+        Date date = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        lblDate.setText(format.format(date));
+
+        Timeline timeline = new Timeline(new KeyFrame(Duration.ZERO, e->{
+            LocalTime time = LocalTime.now();
+            lblTime.setText(
+                    time.getHour() + " : " + time.getMinute() + " : " + time.getSecond()
+            );
+        }),
+                new KeyFrame(Duration.seconds(1))
+        );
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         colIteamcode.setCellValueFactory(new PropertyValueFactory<>("itemCode"));
@@ -231,5 +257,6 @@ public class ItemFormController implements Initializable {
         colsupplier.setCellValueFactory(new PropertyValueFactory<>("supplierId"));
         loadTable();
         setItemId();
+        loadTimeAndDate();
     }
 }

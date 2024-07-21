@@ -7,6 +7,9 @@ import edu.clothify.pos.bo.encryption.PasswordEncryption;
 import edu.clothify.pos.bo.user.UserBo;
 import edu.clothify.pos.dto.User;
 import edu.clothify.pos.utill.BoType;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,13 +19,18 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -48,6 +56,8 @@ public class EmployeeFormController implements Initializable {
     public TableColumn colPassWord;
     public TableColumn colEmail;
     public TableColumn colRole;
+    public Label lblTime;
+    public Label lblDate;
 
     UserBo userBo = BoFactory.getInstance().getBo(BoType.USER);
     PasswordEncryption encryption = BoFactory.getInstance().getBo(BoType.ENCRYPTION);
@@ -200,6 +210,22 @@ public class EmployeeFormController implements Initializable {
         txtEmployeeId.setText(userBo.generateUserId());
     }
 
+    private void loadTimeAndDate(){
+        Date date = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        lblDate.setText(format.format(date));
+
+        Timeline timeline = new Timeline(new KeyFrame(Duration.ZERO, e->{
+            LocalTime time = LocalTime.now();
+            lblTime.setText(
+                    time.getHour() + " : " + time.getMinute() + " : " + time.getSecond()
+            );
+        }),
+                new KeyFrame(Duration.seconds(1))
+        );
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
+    }
     public void btnSearchOnAction(ActionEvent actionEvent) {
         User userById = userBo.getUserById(txtEmployeeId.getText());
         txtName.setText(userById.getName());
@@ -216,5 +242,6 @@ public class EmployeeFormController implements Initializable {
         colRole.setCellValueFactory(new PropertyValueFactory<>("role"));
         loadTable();
         setEmployeeId();
+        loadTimeAndDate();
     }
 }

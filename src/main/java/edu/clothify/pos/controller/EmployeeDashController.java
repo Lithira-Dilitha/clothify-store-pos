@@ -8,6 +8,9 @@ import edu.clothify.pos.bo.suplier.SupplierBo;
 import edu.clothify.pos.bo.user.UserBo;
 import edu.clothify.pos.dto.Orders;
 import edu.clothify.pos.utill.BoType;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,9 +24,13 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -45,6 +52,8 @@ public class EmployeeDashController implements Initializable {
     public TableColumn colCustomerId;
     public TableColumn colEmployeeId;
     public TableColumn colTotal;
+    public Label lblTime;
+    public Label lblDate;
 
     UserBo userBo = BoFactory.getInstance().getBo(BoType.USER);
     CustomerBo customerBo = BoFactory.getInstance().getBo(BoType.CUSTOMER);
@@ -148,7 +157,22 @@ public class EmployeeDashController implements Initializable {
         lblOrdersCount.setText(ordersBo.getAllOrdersCount().toString());
         lblSupplier.setText(supplierBo.getAllSupplierCount().toString());
     }
+    private void loadTimeAndDate(){
+        Date date = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        lblDate.setText(format.format(date));
 
+        Timeline timeline = new Timeline(new KeyFrame(Duration.ZERO, e->{
+            LocalTime time = LocalTime.now();
+            lblTime.setText(
+                    time.getHour() + " : " + time.getMinute() + " : " + time.getSecond()
+            );
+        }),
+                new KeyFrame(Duration.seconds(1))
+        );
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         colOrderId.setCellValueFactory(new PropertyValueFactory<>("orderId"));
@@ -158,5 +182,6 @@ public class EmployeeDashController implements Initializable {
         colTotal .setCellValueFactory(new PropertyValueFactory<>("total"));
         loaCountCards();
         loadTable();
+        loadTimeAndDate();
     }
 }
